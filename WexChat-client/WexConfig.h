@@ -1,0 +1,14 @@
+#ifndef WEXCONFIG_H
+#define WEXCONFIG_H
+
+#define SERVER_ADDRESS "192.168.116.129"
+
+#define SERVER_PORT 8081
+
+#define PROTOCOL_NAME "WEX"
+
+#define PROTOCOL_VERSION "1.0"
+
+
+
+#endif // WEXCONFIG_H
