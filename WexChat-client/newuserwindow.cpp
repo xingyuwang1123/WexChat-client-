@@ -39,6 +39,15 @@ NewUserWindow::NewUserWindow(QWidget *parent) :
         QJsonDocument doc(obj);
         network->sendPMessage(doc.toJson(), "register");
     });
+    connect(network, &WexNetwork::dataArrive, this, [=](){
+        QString res = network->fetchPMessage();
+        if (res == "ok") {
+            ui->warning->setText("");
+        }
+        else if (res == "failed") {
+            ui->warning->setText("后台错误！");
+        }
+    });
 }
 
 NewUserWindow::~NewUserWindow()

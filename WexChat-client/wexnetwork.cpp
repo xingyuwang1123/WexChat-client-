@@ -43,8 +43,12 @@ void WexNetwork::readMessage() {
     if (res == "RES") {
         QString code = header.section(' ', 1, 1);
         QString length = header.section(' ', 3, 3);
-        message = tcpSocket->read(length.toInt());
-        emit dataArrive();
+        if (code == "00") {
+            message = tcpSocket->read(length.toInt());
+            emit dataArrive();
+        }
+        else
+            emit packageError();
     }
     else if (res == "ALIVE") {
         aliveCount--;

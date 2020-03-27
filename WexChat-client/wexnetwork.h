@@ -39,7 +39,7 @@ private:
 signals:
     void dataArrive();
     void linkOut();
-
+    void packageError();
 };
 
 #endif // WEXNETWORK_H

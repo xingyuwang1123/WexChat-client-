@@ -33,9 +33,13 @@ LoginWindow::LoginWindow(QWidget *parent)
         //qDebug()<<res;
         if (res == "ok") {
             //do here
+            ui->warning->setText("");
         }
-        else {
+        else if (res == "wrongup"){
             ui->warning->setText("用户名或者密码错误！");
+        }
+        else if (res == "failed") {
+            ui->warning->setText("后台错误");
         }
     });
 }
