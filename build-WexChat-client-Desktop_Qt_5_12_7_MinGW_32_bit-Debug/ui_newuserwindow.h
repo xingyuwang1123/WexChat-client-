@@ -67,6 +67,7 @@ public:
         passwordEdit = new QLineEdit(widget);
         passwordEdit->setObjectName(QString::fromUtf8("passwordEdit"));
         passwordEdit->setMaxLength(16);
+        passwordEdit->setEchoMode(QLineEdit::Password);
 
         gridLayout->addWidget(passwordEdit, 1, 1, 1, 1);
 
@@ -83,6 +84,7 @@ public:
         repasswordEdit = new QLineEdit(widget);
         repasswordEdit->setObjectName(QString::fromUtf8("repasswordEdit"));
         repasswordEdit->setMaxLength(16);
+        repasswordEdit->setEchoMode(QLineEdit::Password);
 
         gridLayout->addWidget(repasswordEdit, 2, 1, 1, 1);
 

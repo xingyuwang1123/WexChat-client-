@@ -79,7 +79,7 @@ void WexNetwork::sendPMessage(QString msg, QString method) {
 }
 
 void WexNetwork::writeMessage() {
-    qint64 ret;
+    qint64 ret = 0;
     int length = messageOut.length();
     while(ret = tcpSocket->write(messageOut)) {
         if (ret < length) {

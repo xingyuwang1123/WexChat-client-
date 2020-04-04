@@ -2,6 +2,7 @@
 #include "ui_newuserwindow.h"
 #include <QPushButton>
 #include <qjsonobject.h>
+#include <QMessageBox>
 
 NewUserWindow::NewUserWindow(QWidget *parent) :
     QWidget(parent),
@@ -41,10 +42,12 @@ NewUserWindow::NewUserWindow(QWidget *parent) :
     });
     connect(network, &WexNetwork::dataArrive, this, [=](){
         QString res = network->fetchPMessage();
-        if (res == "ok") {
+        if (res == "registerok") {
             ui->warning->setText("");
+            QMessageBox::information(this, "提示", "注册成功");
+            emit changeSignal();
         }
-        else if (res == "failed") {
+        else if (res == "registerfailed") {
             ui->warning->setText("后台错误！");
         }
     });

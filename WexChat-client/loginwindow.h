@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "newuserwindow.h"
 #include "wexnetwork.h"
+#include "mainwindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class LoginWindow; }
@@ -20,6 +21,7 @@ public:
 private:
     Ui::LoginWindow *ui;
     NewUserWindow *subwindow;
+    MainWindow *nextWindow;
     WexNetwork *network;
     void tomainSlot();
     void tosubSlot();

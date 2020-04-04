@@ -125,6 +125,7 @@ Makefile: ../WexChat-client/WexChat-client.pro E:/qt/5.12.7/mingw73_32/mkspecs/w
 		E:/qt/5.12.7/mingw73_32/mkspecs/modules/qt_lib_eventdispatcher_support_private.pri \
 		E:/qt/5.12.7/mingw73_32/mkspecs/modules/qt_lib_fb_support_private.pri \
 		E:/qt/5.12.7/mingw73_32/mkspecs/modules/qt_lib_fontdatabase_support_private.pri \
+		E:/qt/5.12.7/mingw73_32/mkspecs/modules/qt_lib_ftp.pri \
 		E:/qt/5.12.7/mingw73_32/mkspecs/modules/qt_lib_gamepad.pri \
 		E:/qt/5.12.7/mingw73_32/mkspecs/modules/qt_lib_gamepad_private.pri \
 		E:/qt/5.12.7/mingw73_32/mkspecs/modules/qt_lib_gui.pri \
@@ -237,6 +238,7 @@ Makefile: ../WexChat-client/WexChat-client.pro E:/qt/5.12.7/mingw73_32/mkspecs/w
 		../WexChat-client/WexChat-client.pro \
 		E:/qt/5.12.7/mingw73_32/lib/Qt5Widgets.prl \
 		E:/qt/5.12.7/mingw73_32/lib/Qt5Gui.prl \
+		E:/qt/5.12.7/mingw73_32/lib/Qt5Ftp.prl \
 		E:/qt/5.12.7/mingw73_32/lib/Qt5Network.prl \
 		E:/qt/5.12.7/mingw73_32/lib/Qt5Core.prl \
 		E:/qt/5.12.7/mingw73_32/lib/qtmain.prl
@@ -303,6 +305,7 @@ E:/qt/5.12.7/mingw73_32/mkspecs/modules/qt_lib_egl_support_private.pri:
 E:/qt/5.12.7/mingw73_32/mkspecs/modules/qt_lib_eventdispatcher_support_private.pri:
 E:/qt/5.12.7/mingw73_32/mkspecs/modules/qt_lib_fb_support_private.pri:
 E:/qt/5.12.7/mingw73_32/mkspecs/modules/qt_lib_fontdatabase_support_private.pri:
+E:/qt/5.12.7/mingw73_32/mkspecs/modules/qt_lib_ftp.pri:
 E:/qt/5.12.7/mingw73_32/mkspecs/modules/qt_lib_gamepad.pri:
 E:/qt/5.12.7/mingw73_32/mkspecs/modules/qt_lib_gamepad_private.pri:
 E:/qt/5.12.7/mingw73_32/mkspecs/modules/qt_lib_gui.pri:
@@ -415,6 +418,7 @@ E:/qt/5.12.7/mingw73_32/mkspecs/features/lex.prf:
 ../WexChat-client/WexChat-client.pro:
 E:/qt/5.12.7/mingw73_32/lib/Qt5Widgets.prl:
 E:/qt/5.12.7/mingw73_32/lib/Qt5Gui.prl:
+E:/qt/5.12.7/mingw73_32/lib/Qt5Ftp.prl:
 E:/qt/5.12.7/mingw73_32/lib/Qt5Network.prl:
 E:/qt/5.12.7/mingw73_32/lib/Qt5Core.prl:
 E:/qt/5.12.7/mingw73_32/lib/qtmain.prl:

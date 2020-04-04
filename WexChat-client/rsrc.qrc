@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>img/center.svg</file>
+        <file>img/firends.svg</file>
+        <file>img/message.svg</file>
+    </qresource>
+</RCC>

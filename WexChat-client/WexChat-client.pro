@@ -1,4 +1,4 @@
-QT       += core gui network
+QT       += core gui network ftp
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -16,22 +16,41 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    centerbox.cpp \
+    centerwindow.cpp \
+    globle_param.cpp \
     main.cpp \
     loginwindow.cpp \
+    mainwindow.cpp \
+    navigator.cpp \
     newuserwindow.cpp \
+    wexftp.cpp \
     wexnetwork.cpp
 
 HEADERS += \
     WexConfig.h \
+    centerbox.h \
+    centerwindow.h \
+    globle_param.h \
     loginwindow.h \
+    mainwindow.h \
+    navigator.h \
     newuserwindow.h \
+    wexftp.h \
     wexnetwork.h
 
 FORMS += \
+    centerbox.ui \
+    centerwindow.ui \
     loginwindow.ui \
+    mainwindow.ui \
+    navigator.ui \
     newuserwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    rsrc.qrc
