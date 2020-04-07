@@ -13,9 +13,12 @@ MainWindow::MainWindow(QWidget *parent) :
     shownWindow = -1;
     nav = new Navigator(this);
     nav->show();
-    center = new CenterWindow(this);
-    center->hide();
+    center = nullptr;
     connect(nav, &Navigator::centerClicked, this, [=](){
+        if (center == nullptr) {
+            center = new CenterWindow(this);
+            center->hide();
+        }
         if (shownWindow != 3) {
             center->show();
             center->move(0, 56);

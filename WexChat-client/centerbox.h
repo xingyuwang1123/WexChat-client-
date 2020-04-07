@@ -20,6 +20,7 @@ private:
     Ui::CenterBox *ui;
     WexNetwork *network;
     void loadData();
+    bool isEditabel;
 signals:
     void goBack();
 };

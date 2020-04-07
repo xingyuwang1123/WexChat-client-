@@ -57,6 +57,7 @@ void Navigator::loadData() {
                     image = image.scaled(ui->headerLabel->width(), ui->headerLabel->height());
                     ui->headerLabel->setPixmap(QPixmap::fromImage(image));
                 }
+                emit headerImgFinished();
                 disconnect(ftp, &WexFtp::fileFinished, this, 0);
             });
         }

@@ -26,6 +26,7 @@ signals:
     void messageClicked();
     void friendsClicked();
     void centerClicked();
+    void headerImgFinished();
 };
 
 #endif // NAVIGATOR_H

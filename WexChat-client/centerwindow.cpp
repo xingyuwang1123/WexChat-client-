@@ -10,18 +10,24 @@ CenterWindow::CenterWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ftp = WexFtp::get_instance();
-    connect(ftp, &WexFtp::fileFinished, this, [=](QString filename){
-        QImage img(filename);
+    box = new CenterBox(this);
+    box->hide();
+    //connect(ftp, &WexFtp::fileFinished, this, [=](QString filename){
+        QImage img(HEADERFILEPASS);
         img = img.scaled(ui->label->width(), ui->label->height());
         ui->label->setPixmap(QPixmap::fromImage(img));
-        disconnect(ftp, &WexFtp::fileFinished, this, 0);
-    });
+        //disconnect(ftp, &WexFtp::fileFinished, this, 0);
+    //});
+    //点击个人中心按钮
     connect(ui->centerButton, &QPushButton::clicked, this, [=](){
-        box = new CenterBox(this);
-        box->hide();
         ui->frame->hide();
         box->show();
         box->move(200, 1);
+    });
+    //个人中心会弹
+    connect(box, &CenterBox::goBack, this, [=](){
+        box->hide();
+        ui->frame->show();
     });
 }
 

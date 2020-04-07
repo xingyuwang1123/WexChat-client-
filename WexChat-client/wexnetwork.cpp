@@ -22,7 +22,7 @@ WexNetwork::WexNetwork(QObject *parent) : QObject(parent)
             aliveCount = 0;
         }
     });
-    timer->start(20000);
+    //timer->start(20000);
 }
 
 void WexNetwork::newConnect() {
@@ -71,23 +71,21 @@ void WexNetwork::sendPMessage(QString msg, QString method) {
     res.append('/');
     res.append(PROTOCOL_VERSION);
     res.append(' ');
-    res.append(QString::number(msg.length()));
+    QByteArray ttt = msg.toUtf8();
+    res.append(QString::number(ttt.length()));
     res.append(" \n");
     res.append(msg);
     messageOut = res.toUtf8();
-    writeMessage();
+    //writeMessage();
+    qint64 ret = 0;
+    //int length = messageOut.length();
+    ret = tcpSocket->write(messageOut, messageOut.length());
 }
 
 void WexNetwork::writeMessage() {
     qint64 ret = 0;
-    int length = messageOut.length();
-    while(ret = tcpSocket->write(messageOut)) {
-        if (ret < length) {
-            length -=ret;
-            continue;
-        }
-        break;
-    }
+    //int length = messageOut.length();
+    ret = tcpSocket->write(messageOut, messageOut.length());
 }
 
 

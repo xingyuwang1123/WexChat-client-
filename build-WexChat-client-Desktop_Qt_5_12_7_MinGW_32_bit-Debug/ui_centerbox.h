@@ -97,7 +97,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 322, 415));
+        scrollAreaWidgetContents->setGeometry(QRect(0, -106, 322, 415));
         verticalLayout = new QVBoxLayout(scrollAreaWidgetContents);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         widget_2 = new QWidget(scrollAreaWidgetContents);
@@ -129,7 +129,7 @@ public:
 
         dateEdit = new QDateEdit(widget_3);
         dateEdit->setObjectName(QString::fromUtf8("dateEdit"));
-        dateEdit->setEnabled(true);
+        dateEdit->setEnabled(false);
 
         horizontalLayout_2->addWidget(dateEdit);
 
@@ -202,6 +202,7 @@ public:
         provinceComboBox = new QComboBox(widget_7);
         provinceComboBox->setObjectName(QString::fromUtf8("provinceComboBox"));
         provinceComboBox->setEnabled(false);
+        provinceComboBox->setEditable(false);
 
         horizontalLayout_6->addWidget(provinceComboBox);
 
