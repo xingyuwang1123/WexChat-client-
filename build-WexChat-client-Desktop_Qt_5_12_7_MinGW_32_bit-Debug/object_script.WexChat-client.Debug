@@ -1,5 +1,7 @@
+debug/addfriendsdialog.o
 debug/centerbox.o
 debug/centerwindow.o
+debug/friendswindow.o
 debug/globle_param.o
 debug/main.o
 debug/loginwindow.o
@@ -9,8 +11,10 @@ debug/newuserwindow.o
 debug/wexftp.o
 debug/wexnetwork.o
 debug/qrc_rsrc.o
+debug/moc_addfriendsdialog.o
 debug/moc_centerbox.o
 debug/moc_centerwindow.o
+debug/moc_friendswindow.o
 debug/moc_loginwindow.o
 debug/moc_mainwindow.o
 debug/moc_navigator.o

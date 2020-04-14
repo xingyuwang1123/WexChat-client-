@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "navigator.h"
 #include "centerwindow.h"
+#include "friendswindow.h"
 
 namespace Ui {
 class MainWindow;
@@ -21,7 +22,9 @@ private:
     Ui::MainWindow *ui;
     Navigator *nav;
     CenterWindow *center;
+    FriendsWindow *friends;
     int shownWindow;
+    void doHide();
 };
 
 #endif // MAINWINDOW_H

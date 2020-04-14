@@ -16,8 +16,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    addfriendsdialog.cpp \
     centerbox.cpp \
     centerwindow.cpp \
+    friendswindow.cpp \
     globle_param.cpp \
     main.cpp \
     loginwindow.cpp \
@@ -29,8 +31,10 @@ SOURCES += \
 
 HEADERS += \
     WexConfig.h \
+    addfriendsdialog.h \
     centerbox.h \
     centerwindow.h \
+    friendswindow.h \
     globle_param.h \
     loginwindow.h \
     mainwindow.h \
@@ -40,8 +44,10 @@ HEADERS += \
     wexnetwork.h
 
 FORMS += \
+    addfriendsdialog.ui \
     centerbox.ui \
     centerwindow.ui \
+    friendswindow.ui \
     loginwindow.ui \
     mainwindow.ui \
     navigator.ui \

@@ -44,6 +44,9 @@ void Navigator::loadData() {
         QString nickname = obj.value("name").toString();
         QString header = obj.value("header").toString();
         ui->usernameLabel->setText(nickname);
+        QImage image(":/img/center.svg");
+        image = image.scaled(ui->headerLabel->width(), ui->headerLabel->height());
+        ui->headerLabel->setPixmap(QPixmap::fromImage(image));
         if (header != "") {
             //do here load image
             //下载文件

@@ -1,5 +1,7 @@
+release/addfriendsdialog.o
 release/centerbox.o
 release/centerwindow.o
+release/friendswindow.o
 release/globle_param.o
 release/main.o
 release/loginwindow.o
@@ -9,8 +11,10 @@ release/newuserwindow.o
 release/wexftp.o
 release/wexnetwork.o
 release/qrc_rsrc.o
+release/moc_addfriendsdialog.o
 release/moc_centerbox.o
 release/moc_centerwindow.o
+release/moc_friendswindow.o
 release/moc_loginwindow.o
 release/moc_mainwindow.o
 release/moc_navigator.o

@@ -54,8 +54,11 @@ LoginWindow::LoginWindow(QWidget *parent)
             this->nextWindow = new MainWindow();
             this->hide();
             nextWindow->show();
+            //监听推出登陆事件
+            //connect(nextWindow)
         }
     });
+
 }
 
 void LoginWindow::tosubSlot() {

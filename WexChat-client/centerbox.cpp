@@ -43,7 +43,7 @@ CenterBox::CenterBox(QWidget *parent) :
                     ui->cityComboBox->removeItem(0);
                 }
                 QTextStream in(&file);
-                in.setCodec("GB2312");
+                in.setCodec("UTF-8");
                 QString str;
                 in>>str;
                 file.close();
@@ -51,7 +51,11 @@ CenterBox::CenterBox(QWidget *parent) :
                 //qDebug()<<"json:"<<doc.isArray()<<" and "<<doc.isObject();
                 QJsonObject obj = doc.object();
                 QStringList keys = obj.keys();
+                for (int i = 0; i < ui->provinceComboBox->count(); i++) {
+                    ui->provinceComboBox->removeItem(i);
+                }
                 ui->provinceComboBox->addItems(keys);
+
                 void (QComboBox::*ptr)(const QString&) = &QComboBox::currentIndexChanged;
                 connect(ui->provinceComboBox, ptr, this, [=](const QString &text){
                     int count = ui->cityComboBox->count();
@@ -94,9 +98,27 @@ CenterBox::CenterBox(QWidget *parent) :
             network->sendPMessage(QString(doc.toJson()), "updateinfobyuid");
             connect(network, &WexNetwork::dataArrive, this, [=](){
                 QString str = network->fetchPMessage();
+                if (str == "ok") {
+                    QMessageBox::information(this, "提示", "修改成功");
+                    //block修改项目
+                    ui->nicknameEdit->setEnabled(false);
+                    ui->dateEdit->setEnabled(false);
+                    ui->beizhuEdit->setEnabled(false);
+                    ui->plainTextEdit->setEnabled(false);
+                    ui->mailEdit->setEnabled(false);
+                    ui->provinceComboBox->setEnabled(false);
+                    ui->cityComboBox->setEnabled(false);
+                    isEditabel = false;
+                    ui->pushButton_2->setText("编辑");
 
+                }
+                else if (str == "failed") {
+                    QMessageBox::warning(this, "提示", "修改失败");
+                }
                 disconnect(network, &WexNetwork::dataArrive, this, 0);
             });
+
+
         }
     });
 }

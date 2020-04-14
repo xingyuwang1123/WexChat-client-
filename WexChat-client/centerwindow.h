@@ -21,6 +21,9 @@ private:
     Ui::CenterWindow *ui;
     CenterBox *box;
     WexFtp *ftp;
+
+signals:
+    void quitLogin();
 };
 
 #endif // CENTERWINDOW_H

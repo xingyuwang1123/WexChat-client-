@@ -17,4 +17,6 @@
 
 #define TEMPFILE_DIR "/files/"
 
+#define PROJECT_ADDRESS "https://github.com/xingyuwang1123/WexChat"
+
 #endif // WEXCONFIG_H
