@@ -1,3 +1,4 @@
+debug/addcutindialog.o
 debug/addfriendsdialog.o
 debug/centerbox.o
 debug/centerwindow.o
@@ -11,6 +12,7 @@ debug/newuserwindow.o
 debug/wexftp.o
 debug/wexnetwork.o
 debug/qrc_rsrc.o
+debug/moc_addcutindialog.o
 debug/moc_addfriendsdialog.o
 debug/moc_centerbox.o
 debug/moc_centerwindow.o

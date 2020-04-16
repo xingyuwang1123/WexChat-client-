@@ -5,5 +5,6 @@
         <file>img/message.svg</file>
         <file>json/pc.json</file>
         <file>img/plus.svg</file>
+        <file>img/delete.svg</file>
     </qresource>
 </RCC>

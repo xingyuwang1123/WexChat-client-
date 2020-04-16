@@ -27,7 +27,10 @@ private:
     int imageCount;
     AddFriendsDialog *addDia;
     QMap<QString, QTreeWidgetItem*> frimap;
+    QMap<QString, QString> uidMap;
+    bool isfrihidden;
     void loadData();
+    void loadFriData(QString uid);
 };
 
 #endif // FRIENDSWINDOW_H
