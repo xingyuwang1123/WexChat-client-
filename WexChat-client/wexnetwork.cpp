@@ -53,6 +53,13 @@ void WexNetwork::readMessage() {
     else if (res == "ALIVE") {
         aliveCount--;
     }
+    else if (res == "BRO") {
+        QString code = header.section(' ', 1, 1);
+        if (code.toInt() == MESSAGEARRIVE) {
+            qDebug() << "message arrives";
+            emit boardArrive(MESSAGEARRIVE);
+        }
+    }
     else {
         qDebug()<<"bad network package!";
     }

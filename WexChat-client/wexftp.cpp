@@ -9,7 +9,7 @@
 WexFtp::WexFtp(QObject *parent) : QObject(parent)
 {
     ftp = new QFtp(this);
-
+    ftp->setTransferMode(QFtp::Active);
     connect(this->ftp, &QFtp::commandStarted, this, [=](int id){
         qDebug()<< "wexftp:id "<< id<< " started";
     });
@@ -60,13 +60,12 @@ QString WexFtp::uploadFile(QString filepass) {
         qDebug()<<"wexftp:文件不存在，无法上传:"<<filepass;
         return "";
     }
-    if (!file->open(QIODevice::ReadOnly)) {
+    if (!file->open(QIODevice::ReadWrite)) {
         qDebug()<<"wexftp:文件打开失败:"<<filepass;
         return  "";
     }
-    //获取文件md5
-    QByteArray ba = QCryptographicHash::hash(file->readAll(), QCryptographicHash::Md5);
-    QString md5 = QString(ba.data());
+    //获取文件串
+    QString md5 = getRandomString(64);
     //获取后缀名
     QStringList list = filepass.split('/');
     QString name = list.last();

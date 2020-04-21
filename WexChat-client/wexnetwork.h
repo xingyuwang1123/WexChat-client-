@@ -14,6 +14,9 @@ public:
     void disconnect();
     void sendPMessage(QString msg, QString method);
     QString fetchPMessage();
+    enum boardType{
+      MESSAGEARRIVE=0,ELSE=-1
+    };
     static WexNetwork* get_instance(){
         if (m_instance_ptr == nullptr) {
             m_instance_ptr = new WexNetwork;
@@ -40,6 +43,7 @@ signals:
     void dataArrive();
     void linkOut();
     void packageError();
+    void boardArrive(boardType type);
 };
 
 #endif // WEXNETWORK_H

@@ -10,6 +10,7 @@
 #define UI_CENTERWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QLabel>
@@ -28,6 +29,7 @@ public:
     QPushButton *aboutButton;
     QPushButton *backButton;
     QPushButton *quitButton;
+    QPushButton *changeHeaderButton;
 
     void setupUi(QWidget *CenterWindow)
     {
@@ -77,6 +79,12 @@ public:
 "border-color: rgb(0, 0, 0);"));
         quitButton->setAutoDefault(false);
         quitButton->setFlat(true);
+        changeHeaderButton = new QPushButton(frame);
+        changeHeaderButton->setObjectName(QString::fromUtf8("changeHeaderButton"));
+        changeHeaderButton->setGeometry(QRect(240, 80, 20, 20));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/img/circle.svg"), QSize(), QIcon::Normal, QIcon::Off);
+        changeHeaderButton->setIcon(icon);
 
         retranslateUi(CenterWindow);
 
@@ -99,6 +107,7 @@ public:
         aboutButton->setText(QApplication::translate("CenterWindow", "\345\205\263\344\272\216", nullptr));
         backButton->setText(QApplication::translate("CenterWindow", "\345\217\215\351\246\210", nullptr));
         quitButton->setText(QApplication::translate("CenterWindow", "\351\200\200\345\207\272\347\231\273\345\275\225", nullptr));
+        changeHeaderButton->setText(QString());
     } // retranslateUi
 
 };

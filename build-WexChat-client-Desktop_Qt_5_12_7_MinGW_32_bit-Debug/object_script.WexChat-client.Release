@@ -1,7 +1,11 @@
 release/addcutindialog.o
 release/addfriendsdialog.o
+release/applyitemform.o
 release/centerbox.o
 release/centerwindow.o
+release/choosecutindialog.o
+release/friendapplyform.o
+release/friendsapplydialog.o
 release/friendswindow.o
 release/globle_param.o
 release/main.o
@@ -14,8 +18,12 @@ release/wexnetwork.o
 release/qrc_rsrc.o
 release/moc_addcutindialog.o
 release/moc_addfriendsdialog.o
+release/moc_applyitemform.o
 release/moc_centerbox.o
 release/moc_centerwindow.o
+release/moc_choosecutindialog.o
+release/moc_friendapplyform.o
+release/moc_friendsapplydialog.o
 release/moc_friendswindow.o
 release/moc_loginwindow.o
 release/moc_mainwindow.o

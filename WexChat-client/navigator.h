@@ -15,6 +15,7 @@ class Navigator : public QWidget
 
 public:
     explicit Navigator(QWidget *parent = nullptr);
+    void changeHeader(QString pass);
     ~Navigator();
 
 private:

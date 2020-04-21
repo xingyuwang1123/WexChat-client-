@@ -6,5 +6,6 @@
         <file>json/pc.json</file>
         <file>img/plus.svg</file>
         <file>img/delete.svg</file>
+        <file>img/circle.svg</file>
     </qresource>
 </RCC>

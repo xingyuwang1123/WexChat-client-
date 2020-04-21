@@ -5,6 +5,8 @@
 #include <QDebug>
 #include <QPushButton>
 #include <QDesktopServices>
+#include <QFileDialog>
+#include <QMessageBox>
 
 CenterWindow::CenterWindow(QWidget *parent) :
     QWidget(parent),
@@ -12,19 +14,11 @@ CenterWindow::CenterWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ftp = WexFtp::get_instance();
+    network = WexNetwork::get_instance();
     box = new CenterBox(this);
     box->hide();
     //connect(ftp, &WexFtp::fileFinished, this, [=](QString filename){
-        if (HEADERFILEPASS == "") {
-            QImage img(":/img/center/svg");
-            img = img.scaled(ui->label->width(), ui->label->height());
-            ui->label->setPixmap(QPixmap::fromImage(img));
-        }
-        else {
-        QImage img(HEADERFILEPASS);
-        img = img.scaled(ui->label->width(), ui->label->height());
-        ui->label->setPixmap(QPixmap::fromImage(img));
-        }
+    loadImg(HEADERFILEPASS);
         //disconnect(ftp, &WexFtp::fileFinished, this, 0);
     //});
     //点击个人中心按钮
@@ -50,6 +44,53 @@ CenterWindow::CenterWindow(QWidget *parent) :
     connect(ui->quitButton, &QPushButton::clicked, this, [=](){
         emit quitLogin();
     });
+    //改头像
+    connect(ui->changeHeaderButton, &QPushButton::clicked, this, [=](){
+        QString curPath=QDir::currentPath();//获取系统当前目录
+        //获取应用程序的路径
+        QString dlgTitle="选择一个文件"; //对话框标题
+        QString filter="图片文件(*.jpg *.gif *.png);;"; //文件过滤器
+        QString aFileName=QFileDialog::getOpenFileName(this,dlgTitle,curPath,filter);
+        if (!aFileName.isEmpty()) {
+            qDebug()<<aFileName;
+            QString md5 = ftp->uploadFile(aFileName);
+            connect(ftp, &WexFtp::fileFinished, this, [=](QString filename){
+                //QStringList list = filename.split('/');
+                if (filename == aFileName) {
+                    disconnect(ftp, &WexFtp::fileFinished, this, 0);
+                    QJsonObject obj;
+                    obj.insert("uid", GLOUID);
+                    obj.insert("header", md5);
+                    QJsonDocument doc(obj);
+                    network->sendPMessage(doc.toJson(), "changeheaderbyuid");
+                    connect(network, &WexNetwork::dataArrive, this, [=](){
+                        QString res = network->fetchPMessage();
+                        if (res == "ok") {
+                            QMessageBox::information(this, "提示", "上传头像成功");
+                            loadImg(aFileName);
+                            emit headerChanged(md5);
+                        }
+                        else if (res == "failed") {
+                            QMessageBox::information(this, "提示", "上传头像失败");
+                        }
+                    });
+                }
+            });
+        }
+    });
+}
+
+void CenterWindow::loadImg(QString pass) {
+    if (pass == "" || !QFile::exists(pass)) {
+        QImage img(":/img/center/svg");
+        img = img.scaled(ui->label->width(), ui->label->height());
+        ui->label->setPixmap(QPixmap::fromImage(img));
+    }
+    else {
+        QImage img(pass);
+        img = img.scaled(ui->label->width(), ui->label->height());
+        ui->label->setPixmap(QPixmap::fromImage(img));
+    }
 }
 
 CenterWindow::~CenterWindow()

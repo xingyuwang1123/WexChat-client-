@@ -12,4 +12,7 @@ extern QString TEMPDIRPASS;
 
 extern QString HEADERFILEPASS;
 
+
+QString getRandomString(int length);
+
 #endif // GLOBLE_PARAM_H

@@ -18,6 +18,7 @@ class FriendsWindow : public QWidget
 
 public:
     explicit FriendsWindow(QWidget *parent = nullptr);
+
     ~FriendsWindow();
 
 private:
@@ -29,6 +30,7 @@ private:
     QMap<QString, QTreeWidgetItem*> frimap;
     QMap<QString, QString> uidMap;
     bool isfrihidden;
+    QString currentUid;
     void loadData();
     void loadFriData(QString uid);
 };

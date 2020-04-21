@@ -37,10 +37,11 @@ public:
     QPushButton *friendsButton;
     QPushButton *groupButton;
     QTreeWidget *treeWidget;
+    QPushButton *applyButton;
     QFrame *frame_2;
     QFrame *friendInfoFrame;
     QLabel *headerlabel;
-    QPushButton *pushButton;
+    QPushButton *deleteFriButton;
     QPushButton *pushButton_2;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
@@ -117,8 +118,13 @@ public:
         __qtreewidgetitem->setText(0, QString::fromUtf8("1"));
         treeWidget->setHeaderItem(__qtreewidgetitem);
         treeWidget->setObjectName(QString::fromUtf8("treeWidget"));
-        treeWidget->setGeometry(QRect(0, 40, 231, 501));
+        treeWidget->setGeometry(QRect(0, 80, 231, 461));
         treeWidget->setColumnCount(1);
+        applyButton = new QPushButton(frame);
+        applyButton->setObjectName(QString::fromUtf8("applyButton"));
+        applyButton->setGeometry(QRect(0, 42, 231, 41));
+        applyButton->setAutoDefault(false);
+        applyButton->setFlat(false);
         frame_2 = new QFrame(FriendsWindow);
         frame_2->setObjectName(QString::fromUtf8("frame_2"));
         frame_2->setGeometry(QRect(229, -1, 571, 541));
@@ -132,9 +138,9 @@ public:
         headerlabel = new QLabel(friendInfoFrame);
         headerlabel->setObjectName(QString::fromUtf8("headerlabel"));
         headerlabel->setGeometry(QRect(140, 20, 71, 61));
-        pushButton = new QPushButton(friendInfoFrame);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(20, 492, 91, 31));
+        deleteFriButton = new QPushButton(friendInfoFrame);
+        deleteFriButton->setObjectName(QString::fromUtf8("deleteFriButton"));
+        deleteFriButton->setGeometry(QRect(20, 492, 91, 31));
         pushButton_2 = new QPushButton(friendInfoFrame);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
         pushButton_2->setGeometry(QRect(260, 492, 81, 31));
@@ -335,6 +341,9 @@ public:
 
         retranslateUi(FriendsWindow);
 
+        applyButton->setDefault(false);
+
+
         QMetaObject::connectSlotsByName(FriendsWindow);
     } // setupUi
 
@@ -343,8 +352,9 @@ public:
         FriendsWindow->setWindowTitle(QApplication::translate("FriendsWindow", "Form", nullptr));
         friendsButton->setText(QApplication::translate("FriendsWindow", "\345\245\275\345\217\213", nullptr));
         groupButton->setText(QApplication::translate("FriendsWindow", "\347\276\244", nullptr));
+        applyButton->setText(QApplication::translate("FriendsWindow", "\346\226\260\346\234\213\345\217\213\347\224\263\350\257\267", nullptr));
         headerlabel->setText(QString());
-        pushButton->setText(QApplication::translate("FriendsWindow", "\345\210\240\351\231\244", nullptr));
+        deleteFriButton->setText(QApplication::translate("FriendsWindow", "\345\210\240\351\231\244", nullptr));
         pushButton_2->setText(QApplication::translate("FriendsWindow", "\345\217\221\346\266\210\346\201\257", nullptr));
         label_2->setText(QApplication::translate("FriendsWindow", "\346\230\265\347\247\260\357\274\232", nullptr));
         label_3->setText(QApplication::translate("FriendsWindow", "\345\207\272\347\224\237\346\227\245\346\234\237\357\274\232", nullptr));

@@ -28,36 +28,38 @@ LoginWindow::LoginWindow(QWidget *parent)
         //qDebug()<<obj;
         QJsonDocument jsonDoc(obj);
         this->network->sendPMessage(QString(jsonDoc.toJson()), "login");
-    });
-    connect(this->network, &WexNetwork::dataArrive, this, [=](){
-        QString res = network->fetchPMessage();
-        //qDebug()<<res;
-        if (res == "loginwrongup"){
-            ui->warning->setText("用户名或者密码错误！");
-        }
-        else if (res == "loginfailed") {
-            ui->warning->setText("后台错误");
-        }
-        else {
-            //do here
-            ui->warning->setText("");
-            QJsonDocument jsondoc = QJsonDocument::fromJson(res.toUtf8());
-            QJsonObject obj = jsondoc.object();
-            //QJsonObject::iterator objit = obj.find("uid");
-            QJsonValue value = obj.value("uid");
-            GLOUID = value.toString();
-            qDebug()<< GLOUID;
-            //消除新用户窗口
-            delete this->subwindow;
+        connect(this->network, &WexNetwork::dataArrive, this, [=](){
+            QString res = network->fetchPMessage();
             //断开网路监听
             disconnect(this->network, &WexNetwork::dataArrive, this, 0);
-            this->nextWindow = new MainWindow();
-            this->hide();
-            nextWindow->show();
-            //监听推出登陆事件
-            //connect(nextWindow)
-        }
+            //qDebug()<<res;
+            if (res == "loginwrongup"){
+                ui->warning->setText("用户名或者密码错误！");
+            }
+            else if (res == "loginfailed") {
+                ui->warning->setText("后台错误");
+            }
+            else {
+                //do here
+                ui->warning->setText("");
+                QJsonDocument jsondoc = QJsonDocument::fromJson(res.toUtf8());
+                QJsonObject obj = jsondoc.object();
+                //QJsonObject::iterator objit = obj.find("uid");
+                QJsonValue value = obj.value("uid");
+                GLOUID = value.toString();
+                qDebug()<< GLOUID;
+                //消除新用户窗口
+                delete this->subwindow;
+
+                this->nextWindow = new MainWindow();
+                this->hide();
+                nextWindow->show();
+                //监听推出登陆事件
+                //connect(nextWindow)
+            }
+        });
     });
+
 
 }
 

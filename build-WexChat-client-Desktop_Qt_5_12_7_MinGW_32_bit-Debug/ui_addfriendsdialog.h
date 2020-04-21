@@ -12,10 +12,10 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
-#include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -23,22 +23,17 @@ QT_BEGIN_NAMESPACE
 class Ui_AddFriendsDialog
 {
 public:
-    QDialogButtonBox *buttonBox;
     QWidget *widget;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
-    QLineEdit *lineEdit;
+    QLineEdit *nameEdit;
+    QPushButton *pushButton;
 
     void setupUi(QDialog *AddFriendsDialog)
     {
         if (AddFriendsDialog->objectName().isEmpty())
             AddFriendsDialog->setObjectName(QString::fromUtf8("AddFriendsDialog"));
         AddFriendsDialog->resize(320, 240);
-        buttonBox = new QDialogButtonBox(AddFriendsDialog);
-        buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
-        buttonBox->setGeometry(QRect(10, 181, 301, 51));
-        buttonBox->setOrientation(Qt::Horizontal);
-        buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
         widget = new QWidget(AddFriendsDialog);
         widget->setObjectName(QString::fromUtf8("widget"));
         widget->setGeometry(QRect(30, 80, 261, 38));
@@ -49,16 +44,17 @@ public:
 
         horizontalLayout->addWidget(label);
 
-        lineEdit = new QLineEdit(widget);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-        lineEdit->setMaxLength(16);
+        nameEdit = new QLineEdit(widget);
+        nameEdit->setObjectName(QString::fromUtf8("nameEdit"));
+        nameEdit->setMaxLength(16);
 
-        horizontalLayout->addWidget(lineEdit);
+        horizontalLayout->addWidget(nameEdit);
 
+        pushButton = new QPushButton(AddFriendsDialog);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(90, 170, 101, 31));
 
         retranslateUi(AddFriendsDialog);
-        QObject::connect(buttonBox, SIGNAL(accepted()), AddFriendsDialog, SLOT(accept()));
-        QObject::connect(buttonBox, SIGNAL(rejected()), AddFriendsDialog, SLOT(reject()));
 
         QMetaObject::connectSlotsByName(AddFriendsDialog);
     } // setupUi
@@ -66,7 +62,8 @@ public:
     void retranslateUi(QDialog *AddFriendsDialog)
     {
         AddFriendsDialog->setWindowTitle(QApplication::translate("AddFriendsDialog", "\346\267\273\345\212\240\345\245\275\345\217\213", nullptr));
-        label->setText(QApplication::translate("AddFriendsDialog", "uid/\350\264\246\345\217\267:", nullptr));
+        label->setText(QApplication::translate("AddFriendsDialog", "uid:", nullptr));
+        pushButton->setText(QApplication::translate("AddFriendsDialog", "\346\237\245\346\211\276", nullptr));
     } // retranslateUi
 
 };

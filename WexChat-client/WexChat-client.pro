@@ -18,8 +18,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     addcutindialog.cpp \
     addfriendsdialog.cpp \
+    applyitemform.cpp \
     centerbox.cpp \
     centerwindow.cpp \
+    choosecutindialog.cpp \
+    friendapplyform.cpp \
+    friendsapplydialog.cpp \
     friendswindow.cpp \
     globle_param.cpp \
     main.cpp \
@@ -34,8 +38,12 @@ HEADERS += \
     WexConfig.h \
     addcutindialog.h \
     addfriendsdialog.h \
+    applyitemform.h \
     centerbox.h \
     centerwindow.h \
+    choosecutindialog.h \
+    friendapplyform.h \
+    friendsapplydialog.h \
     friendswindow.h \
     globle_param.h \
     loginwindow.h \
@@ -48,8 +56,12 @@ HEADERS += \
 FORMS += \
     addcutindialog.ui \
     addfriendsdialog.ui \
+    applyitemform.ui \
     centerbox.ui \
     centerwindow.ui \
+    choosecutindialog.ui \
+    friendapplyform.ui \
+    friendsapplydialog.ui \
     friendswindow.ui \
     loginwindow.ui \
     mainwindow.ui \

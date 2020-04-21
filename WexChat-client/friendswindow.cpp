@@ -2,6 +2,7 @@
 #include "ui_friendswindow.h"
 #include "globle_param.h"
 #include "addcutindialog.h"
+#include "friendsapplydialog.h"
 #include <QJsonObject>
 #include <QDebug>
 #include <QMessageBox>
@@ -19,7 +20,7 @@ FriendsWindow::FriendsWindow(QWidget *parent) :
     connect(ui->addButton, &QPushButton::clicked, this, [=](){
         int ret;
         if (addDia == nullptr) {
-            addDia = new AddFriendsDialog(this);
+            addDia = new AddFriendsDialog(this, this->uidMap);
             ret = addDia->exec();
         }
         else {
@@ -46,6 +47,8 @@ FriendsWindow::FriendsWindow(QWidget *parent) :
             }
             //load data
             loadFriData(clickedUid);
+            //设置当前uid
+            currentUid = clickedUid;
         }
         //点击添加分组
         else if (item->text(0) == "添加分组") {
@@ -115,6 +118,37 @@ FriendsWindow::FriendsWindow(QWidget *parent) :
             }
         }
     });
+    //申请按钮
+    connect(ui->applyButton, &QPushButton::clicked, this, [=](){
+        //获取分组信息
+        QStringList list;
+        foreach (QTreeWidgetItem * item, frimap.values()) {
+            list << item->text(0);
+        }
+         FriendsApplyDialog *dia = new FriendsApplyDialog(this, list);
+         dia->exec();
+         delete dia;
+         loadData();
+    });
+    //删除好友的点击事件
+    connect(ui->deleteFriButton, &QPushButton::clicked, this, [=](){
+        if (QMessageBox::question(this, "删除好友", "确认要删除好友吗？") == QMessageBox::Yes) { QJsonObject obj;
+            obj.insert("fromuid", GLOUID);
+            obj.insert("touid", currentUid);
+            QJsonDocument doc(obj);
+            network->sendPMessage(doc.toJson(), "deletefriend");
+            connect(network, &WexNetwork::dataArrive, this, [=](){
+                QString res = network->fetchPMessage();
+                disconnect(network, &WexNetwork::dataArrive, this, 0);
+                if (res == "ok") {
+                    loadData();
+                }
+                else if (res == "failed") {
+                    QMessageBox::information(this, "提示", "删除失败");
+                }
+            });
+        }
+    });
 }
 
 void FriendsWindow::loadFriData(QString uid) {
@@ -135,7 +169,23 @@ void FriendsWindow::loadFriData(QString uid) {
         ui->usernameEdit->setText(username);
         ui->nicknameEdit->setText(nickname);
         if (header != "") {
-
+            ftp->fetchFile(header);
+            connect(ftp, &WexFtp::fileFinished, this, [=](QString filename){
+                QStringList list = filename.split('/');
+                if (list.last() == header) {
+                    disconnect(ftp, &WexFtp::fileFinished, this, 0);
+                     QImage image(filename);
+                     image = image.scaled(ui->headerlabel->width(), ui->headerlabel->height());
+                     //QIcon icon(QPixmap::fromImage(image));
+                     ui->headerlabel->setPixmap(QPixmap::fromImage(image));
+                }
+            });
+        }
+        else {
+            QImage image(":/img/center.svg");
+            image = image.scaled(ui->headerlabel->width(), ui->headerlabel->height());
+            //QIcon icon(QPixmap::fromImage(image));
+            ui->headerlabel->setPixmap(QPixmap::fromImage(image));
         }
         QDateTime time = QDateTime::fromTime_t(birthtime);
         ui->birthtimeEdit->setDate(time.date());

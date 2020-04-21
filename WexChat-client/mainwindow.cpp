@@ -15,10 +15,15 @@ MainWindow::MainWindow(QWidget *parent) :
     nav->show();
     center = nullptr;
     friends = nullptr;
+
     connect(nav, &Navigator::centerClicked, this, [=](){
         if (center == nullptr) {
             center = new CenterWindow(this);
             center->hide();
+            //change img
+            connect(center, &CenterWindow::headerChanged, this, [=](QString md5){
+                nav->changeHeader(md5);
+            });
         }
         if (shownWindow != 3) {
             doHide();

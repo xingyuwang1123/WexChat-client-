@@ -34,6 +34,23 @@ Navigator::Navigator(QWidget *parent) :
     loadData();
 }
 
+void Navigator::changeHeader(QString header) {
+    //下载文件
+    ftp->fetchFile(header);
+    //下载完成后载图
+    connect(ftp, &WexFtp::fileFinished, this, [=](QString filename){
+        disconnect(ftp, &WexFtp::fileFinished, this, 0);
+        HEADERFILEPASS = filename;
+        QStringList list = filename.split('/');
+        if (list.last() == header) {
+            QImage image(filename);
+            image = image.scaled(ui->headerLabel->width(), ui->headerLabel->height());
+            ui->headerLabel->setPixmap(QPixmap::fromImage(image));
+        }
+        emit headerImgFinished();
+    });
+}
+
 void Navigator::loadData() {
     network->sendPMessage(GLOUID, "getheadername");
     //qDebug()<<GLOUID;

@@ -61,9 +61,9 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>40</y>
+      <y>80</y>
       <width>231</width>
-      <height>501</height>
+      <height>461</height>
      </rect>
     </property>
     <property name="columnCount">
@@ -74,6 +74,28 @@
       <string notr="true">1</string>
      </property>
     </column>
+   </widget>
+   <widget class="QPushButton" name="applyButton">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>42</y>
+      <width>231</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>新朋友申请</string>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
    </widget>
   </widget>
   <widget class="QFrame" name="frame_2">
@@ -119,7 +141,7 @@
       <string/>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="deleteFriButton">
      <property name="geometry">
       <rect>
        <x>20</x>

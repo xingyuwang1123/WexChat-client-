@@ -39,18 +39,20 @@ NewUserWindow::NewUserWindow(QWidget *parent) :
         obj.insert("nickname", nickname);
         QJsonDocument doc(obj);
         network->sendPMessage(doc.toJson(), "register");
+        connect(network, &WexNetwork::dataArrive, this, [=](){
+            QString res = network->fetchPMessage();
+            disconnect(network, &WexNetwork::dataArrive, this, 0);
+            if (res == "registerok") {
+                ui->warning->setText("");
+                QMessageBox::information(this, "提示", "注册成功");
+                emit changeSignal();
+            }
+            else if (res == "registerfailed") {
+                ui->warning->setText("后台错误！");
+            }
+        });
     });
-    connect(network, &WexNetwork::dataArrive, this, [=](){
-        QString res = network->fetchPMessage();
-        if (res == "registerok") {
-            ui->warning->setText("");
-            QMessageBox::information(this, "提示", "注册成功");
-            emit changeSignal();
-        }
-        else if (res == "registerfailed") {
-            ui->warning->setText("后台错误！");
-        }
-    });
+
 }
 
 NewUserWindow::~NewUserWindow()

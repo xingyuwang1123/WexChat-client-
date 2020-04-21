@@ -1,7 +1,11 @@
 debug/addcutindialog.o
 debug/addfriendsdialog.o
+debug/applyitemform.o
 debug/centerbox.o
 debug/centerwindow.o
+debug/choosecutindialog.o
+debug/friendapplyform.o
+debug/friendsapplydialog.o
 debug/friendswindow.o
 debug/globle_param.o
 debug/main.o
@@ -14,8 +18,12 @@ debug/wexnetwork.o
 debug/qrc_rsrc.o
 debug/moc_addcutindialog.o
 debug/moc_addfriendsdialog.o
+debug/moc_applyitemform.o
 debug/moc_centerbox.o
 debug/moc_centerwindow.o
+debug/moc_choosecutindialog.o
+debug/moc_friendapplyform.o
+debug/moc_friendsapplydialog.o
 debug/moc_friendswindow.o
 debug/moc_loginwindow.o
 debug/moc_mainwindow.o

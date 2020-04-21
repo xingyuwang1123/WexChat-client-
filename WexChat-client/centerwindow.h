@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "wexftp.h"
+#include "wexnetwork.h"
 #include "centerbox.h"
 
 namespace Ui {
@@ -21,9 +22,11 @@ private:
     Ui::CenterWindow *ui;
     CenterBox *box;
     WexFtp *ftp;
-
+    WexNetwork *network;
+    void loadImg(QString pass);
 signals:
     void quitLogin();
+    void headerChanged(QString header);
 };
 
 #endif // CENTERWINDOW_H
