@@ -29,6 +29,9 @@ SOURCES += \
     main.cpp \
     loginwindow.cpp \
     mainwindow.cpp \
+    messagechatform.cpp \
+    messageitemform.cpp \
+    messagewindow.cpp \
     navigator.cpp \
     newuserwindow.cpp \
     wexftp.cpp \
@@ -48,6 +51,9 @@ HEADERS += \
     globle_param.h \
     loginwindow.h \
     mainwindow.h \
+    messagechatform.h \
+    messageitemform.h \
+    messagewindow.h \
     navigator.h \
     newuserwindow.h \
     wexftp.h \
@@ -65,6 +71,9 @@ FORMS += \
     friendswindow.ui \
     loginwindow.ui \
     mainwindow.ui \
+    messagechatform.ui \
+    messageitemform.ui \
+    messagewindow.ui \
     navigator.ui \
     newuserwindow.ui
 

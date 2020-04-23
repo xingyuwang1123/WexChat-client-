@@ -5,6 +5,7 @@
 #include "navigator.h"
 #include "centerwindow.h"
 #include "friendswindow.h"
+#include "messagewindow.h"
 
 namespace Ui {
 class MainWindow;
@@ -23,6 +24,7 @@ private:
     Navigator *nav;
     CenterWindow *center;
     FriendsWindow *friends;
+    MessageWindow *message;
     int shownWindow;
     void doHide();
 };

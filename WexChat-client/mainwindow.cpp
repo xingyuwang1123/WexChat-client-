@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
     nav->show();
     center = nullptr;
     friends = nullptr;
-
+    message  = nullptr;
     connect(nav, &Navigator::centerClicked, this, [=](){
         if (center == nullptr) {
             center = new CenterWindow(this);
@@ -36,6 +36,14 @@ MainWindow::MainWindow(QWidget *parent) :
         if (friends == nullptr) {
             friends = new FriendsWindow(this);
             friends->hide();
+            //切换发消息窗口
+            connect(friends, &FriendsWindow::sendMessageChat, this, [=](QString uid, QString name){
+                message->changeChatForm(uid, name);
+                doHide();
+                message->show();
+                message->move(0,56);
+                shownWindow = 1;
+            });
         }
         if (shownWindow != 2) {
             doHide();
@@ -44,6 +52,23 @@ MainWindow::MainWindow(QWidget *parent) :
             shownWindow = 2;
         }
     });
+    connect(nav, &Navigator::messageClicked, this, [=](){
+        if (message == nullptr) {
+            message = new MessageWindow(this);
+            message->hide();
+        }
+        if (shownWindow != 1) {
+            doHide();
+            message->show();
+            message->move(0,56);
+            shownWindow = 1;
+        }
+    });
+    //直接显示消息窗口
+    message = new MessageWindow(this);
+    message->show();
+    message->move(0,56);
+    shownWindow = 1;
 }
 
 void MainWindow::doHide() {
@@ -52,6 +77,9 @@ void MainWindow::doHide() {
     }
     else if (shownWindow == 2) {
         friends->hide();
+    }
+    else if (shownWindow == 1) {
+        message->hide();
     }
 }
 

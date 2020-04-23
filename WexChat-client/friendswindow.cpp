@@ -149,6 +149,10 @@ FriendsWindow::FriendsWindow(QWidget *parent) :
             });
         }
     });
+    //发消息点击事件
+    connect(ui->messageButton, &QPushButton::clicked, this, [=](){
+        emit sendMessageChat(currentUid, ui->nicknameEdit->text());
+    });
 }
 
 void FriendsWindow::loadFriData(QString uid) {
