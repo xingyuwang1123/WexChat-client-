@@ -26,11 +26,14 @@ SOURCES += \
     friendsapplydialog.cpp \
     friendswindow.cpp \
     globle_param.cpp \
+    groupwindow.cpp \
     main.cpp \
     loginwindow.cpp \
     mainwindow.cpp \
     messagechatform.cpp \
     messageitemform.cpp \
+    messageshowform.cpp \
+    messageshowitemform.cpp \
     messagewindow.cpp \
     navigator.cpp \
     newuserwindow.cpp \
@@ -49,10 +52,13 @@ HEADERS += \
     friendsapplydialog.h \
     friendswindow.h \
     globle_param.h \
+    groupwindow.h \
     loginwindow.h \
     mainwindow.h \
     messagechatform.h \
     messageitemform.h \
+    messageshowform.h \
+    messageshowitemform.h \
     messagewindow.h \
     navigator.h \
     newuserwindow.h \
@@ -69,10 +75,13 @@ FORMS += \
     friendapplyform.ui \
     friendsapplydialog.ui \
     friendswindow.ui \
+    groupwindow.ui \
     loginwindow.ui \
     mainwindow.ui \
     messagechatform.ui \
     messageitemform.ui \
+    messageshowform.ui \
+    messageshowitemform.ui \
     messagewindow.ui \
     navigator.ui \
     newuserwindow.ui

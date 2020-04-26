@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_WexNetwork_t {
-    QByteArrayData data[8];
-    char stringdata0[71];
+    QByteArrayData data[9];
+    char stringdata0[76];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -38,12 +38,13 @@ QT_MOC_LITERAL(3, 23, 7), // "linkOut"
 QT_MOC_LITERAL(4, 31, 12), // "packageError"
 QT_MOC_LITERAL(5, 44, 11), // "boardArrive"
 QT_MOC_LITERAL(6, 56, 9), // "boardType"
-QT_MOC_LITERAL(7, 66, 4) // "type"
+QT_MOC_LITERAL(7, 66, 4), // "type"
+QT_MOC_LITERAL(8, 71, 4) // "data"
 
     },
     "WexNetwork\0dataArrive\0\0linkOut\0"
     "packageError\0boardArrive\0boardType\0"
-    "type"
+    "type\0data"
 };
 #undef QT_MOC_LITERAL
 
@@ -64,13 +65,13 @@ static const uint qt_meta_data_WexNetwork[] = {
        1,    0,   34,    2, 0x06 /* Public */,
        3,    0,   35,    2, 0x06 /* Public */,
        4,    0,   36,    2, 0x06 /* Public */,
-       5,    1,   37,    2, 0x06 /* Public */,
+       5,    2,   37,    2, 0x06 /* Public */,
 
  // signals: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 6,    7,
+    QMetaType::Void, 0x80000000 | 6, QMetaType::QByteArray,    7,    8,
 
        0        // eod
 };
@@ -84,7 +85,7 @@ void WexNetwork::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 0: _t->dataArrive(); break;
         case 1: _t->linkOut(); break;
         case 2: _t->packageError(); break;
-        case 3: _t->boardArrive((*reinterpret_cast< boardType(*)>(_a[1]))); break;
+        case 3: _t->boardArrive((*reinterpret_cast< boardType(*)>(_a[1])),(*reinterpret_cast< QByteArray(*)>(_a[2]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -111,7 +112,7 @@ void WexNetwork::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
             }
         }
         {
-            using _t = void (WexNetwork::*)(boardType );
+            using _t = void (WexNetwork::*)(boardType , QByteArray );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&WexNetwork::boardArrive)) {
                 *result = 3;
                 return;
@@ -179,9 +180,9 @@ void WexNetwork::packageError()
 }
 
 // SIGNAL 3
-void WexNetwork::boardArrive(boardType _t1)
+void WexNetwork::boardArrive(boardType _t1, QByteArray _t2)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
     QMetaObject::activate(this, &staticMetaObject, 3, _a);
 }
 QT_WARNING_POP

@@ -27,6 +27,7 @@ signals:
     void messageClicked();
     void friendsClicked();
     void centerClicked();
+    void groupClicked();
     void headerImgFinished();
 };
 

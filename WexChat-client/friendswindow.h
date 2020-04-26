@@ -33,7 +33,6 @@ private:
     QString currentUid;
     void loadData();
     void loadFriData(QString uid);
-
 signals:
     void sendMessageChat(QString uid, QString name);
 };

@@ -31,6 +31,9 @@ Navigator::Navigator(QWidget *parent) :
     connect(ui->centerButton, &QPushButton::clicked, this, [=](){
         emit centerClicked();
     });
+    connect(ui->groupButton, &QPushButton::clicked, this, [=](){
+        emit groupClicked();
+    });
     loadData();
 }
 
@@ -61,6 +64,7 @@ void Navigator::loadData() {
         QString nickname = obj.value("name").toString();
         QString header = obj.value("header").toString();
         ui->usernameLabel->setText(nickname);
+        MYNAME = nickname;
         QImage image(":/img/center.svg");
         image = image.scaled(ui->headerLabel->width(), ui->headerLabel->height());
         ui->headerLabel->setPixmap(QPixmap::fromImage(image));

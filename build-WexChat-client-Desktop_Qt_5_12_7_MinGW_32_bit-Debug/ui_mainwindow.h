@@ -39,7 +39,7 @@ public:
 
     void retranslateUi(QWidget *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Form", nullptr));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "wexchat", nullptr));
     } // retranslateUi
 
 };

@@ -7,5 +7,7 @@
         <file>img/plus.svg</file>
         <file>img/delete.svg</file>
         <file>img/circle.svg</file>
+        <file>img/group.svg</file>
+        <file>img/triangle.svg</file>
     </qresource>
 </RCC>

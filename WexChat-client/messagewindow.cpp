@@ -12,10 +12,32 @@ MessageWindow::MessageWindow(QWidget *parent) :
     network = WexNetwork::get_instance();
     //load chatform
     //changeChatForm("123", "wang");
-
+    //receive message
+    connect(network, &WexNetwork::boardArrive, this, [=](WexNetwork::boardType type, QByteArray data){
+        QJsonDocument doc = QJsonDocument::fromJson(data);
+        QJsonObject obj = doc.object();
+        QString text = obj.value("text").toString();
+        long msgtime = obj.value("msgtime").toInt();
+        QString fromuid = obj.value("fromuid").toString();
+        QString area = obj.value("area").toString();
+        int mtype = obj.value("type").toInt();
+        if (mtype == 0) {
+            if (idchatMap.contains(fromuid)) {
+                idchatMap.find(fromuid).value()->addMsg(text, msgtime);
+            }
+            else {
+                //create formfirst
+                addItem(fromuid, "user", true);
+                connect(this, &MessageWindow::itemLoadok, this, [=](){
+                    idchatMap.find(fromuid).value()->addMsg(text, msgtime);
+                });
+            }
+        }
+        //ui->chatForm->addItem(headerpass, name, text, msgtime);
+    });
 }
 
-void MessageWindow::addItem(QString uid, QString type) {
+void MessageWindow::addItem(QString uid, QString type, bool ifcreate) {
     if (type == "user") {
         network->sendPMessage(uid, "getheadername");
         connect(network, &WexNetwork::dataArrive, this, [=](){
@@ -38,7 +60,12 @@ void MessageWindow::addItem(QString uid, QString type) {
             playout->addWidget(form2);
             iditemMap.insert(uid, form2);
             ui->messagescrollArea->widget()->setLayout(playout);
-
+            if (ifcreate == true) {
+                MessageChatForm *chatform = new MessageChatForm(this, uid, name, 0);
+                chatform->hide();
+                idchatMap.insert(uid, chatform);
+                emit itemLoadok();
+            }
         });
 
     }
@@ -62,7 +89,7 @@ void MessageWindow::changeChatForm(QString uid, QString name) {
         idchatMap.insert(uid, chatForm);
     }
     if (!iditemMap.contains(uid)) {
-        addItem(uid, "user");
+        addItem(uid, "user", false);
     }
 }
 

@@ -28,42 +28,13 @@
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QWidget" name="widget" native="true">
-    <property name="geometry">
-     <rect>
-      <x>-1</x>
-      <y>-1</y>
-      <width>231</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QPushButton" name="friendsButton">
-       <property name="contextMenuPolicy">
-        <enum>Qt::NoContextMenu</enum>
-       </property>
-       <property name="text">
-        <string>好友</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="groupButton">
-       <property name="text">
-        <string>群</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
    <widget class="QTreeWidget" name="treeWidget">
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>80</y>
+      <y>40</y>
       <width>231</width>
-      <height>461</height>
+      <height>501</height>
      </rect>
     </property>
     <property name="columnCount">
@@ -79,7 +50,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>42</y>
+      <y>0</y>
       <width>231</width>
       <height>41</height>
      </rect>

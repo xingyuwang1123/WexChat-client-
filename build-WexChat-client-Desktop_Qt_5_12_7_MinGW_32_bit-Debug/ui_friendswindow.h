@@ -32,10 +32,6 @@ class Ui_FriendsWindow
 {
 public:
     QFrame *frame;
-    QWidget *widget;
-    QHBoxLayout *horizontalLayout;
-    QPushButton *friendsButton;
-    QPushButton *groupButton;
     QTreeWidget *treeWidget;
     QPushButton *applyButton;
     QFrame *frame_2;
@@ -97,32 +93,16 @@ public:
         frame->setGeometry(QRect(-1, 0, 231, 541));
         frame->setFrameShape(QFrame::Panel);
         frame->setFrameShadow(QFrame::Raised);
-        widget = new QWidget(frame);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(-1, -1, 231, 41));
-        horizontalLayout = new QHBoxLayout(widget);
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        friendsButton = new QPushButton(widget);
-        friendsButton->setObjectName(QString::fromUtf8("friendsButton"));
-        friendsButton->setContextMenuPolicy(Qt::NoContextMenu);
-
-        horizontalLayout->addWidget(friendsButton);
-
-        groupButton = new QPushButton(widget);
-        groupButton->setObjectName(QString::fromUtf8("groupButton"));
-
-        horizontalLayout->addWidget(groupButton);
-
         treeWidget = new QTreeWidget(frame);
         QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
         __qtreewidgetitem->setText(0, QString::fromUtf8("1"));
         treeWidget->setHeaderItem(__qtreewidgetitem);
         treeWidget->setObjectName(QString::fromUtf8("treeWidget"));
-        treeWidget->setGeometry(QRect(0, 80, 231, 461));
+        treeWidget->setGeometry(QRect(0, 40, 231, 501));
         treeWidget->setColumnCount(1);
         applyButton = new QPushButton(frame);
         applyButton->setObjectName(QString::fromUtf8("applyButton"));
-        applyButton->setGeometry(QRect(0, 42, 231, 41));
+        applyButton->setGeometry(QRect(0, 0, 231, 41));
         applyButton->setAutoDefault(false);
         applyButton->setFlat(false);
         frame_2 = new QFrame(FriendsWindow);
@@ -350,8 +330,6 @@ public:
     void retranslateUi(QWidget *FriendsWindow)
     {
         FriendsWindow->setWindowTitle(QApplication::translate("FriendsWindow", "Form", nullptr));
-        friendsButton->setText(QApplication::translate("FriendsWindow", "\345\245\275\345\217\213", nullptr));
-        groupButton->setText(QApplication::translate("FriendsWindow", "\347\276\244", nullptr));
         applyButton->setText(QApplication::translate("FriendsWindow", "\346\226\260\346\234\213\345\217\213\347\224\263\350\257\267", nullptr));
         headerlabel->setText(QString());
         deleteFriButton->setText(QApplication::translate("FriendsWindow", "\345\210\240\351\231\244", nullptr));

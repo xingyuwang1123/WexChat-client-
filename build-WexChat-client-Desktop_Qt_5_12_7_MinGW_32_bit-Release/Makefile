@@ -212,6 +212,7 @@ Makefile: ../WexChat-client/WexChat-client.pro E:/qt/5.12.7/mingw73_32/mkspecs/w
 		E:/qt/5.12.7/mingw73_32/mkspecs/features/qt_config.prf \
 		E:/qt/5.12.7/mingw73_32/mkspecs/win32-g++/qmake.conf \
 		E:/qt/5.12.7/mingw73_32/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		E:/qt/5.12.7/mingw73_32/mkspecs/features/exclusive_builds.prf \
 		E:/qt/5.12.7/mingw73_32/mkspecs/features/toolchain.prf \
 		E:/qt/5.12.7/mingw73_32/mkspecs/features/default_pre.prf \
@@ -391,6 +392,7 @@ E:/qt/5.12.7/mingw73_32/mkspecs/features/qt_functions.prf:
 E:/qt/5.12.7/mingw73_32/mkspecs/features/qt_config.prf:
 E:/qt/5.12.7/mingw73_32/mkspecs/win32-g++/qmake.conf:
 E:/qt/5.12.7/mingw73_32/mkspecs/features/spec_post.prf:
+.qmake.stash:
 E:/qt/5.12.7/mingw73_32/mkspecs/features/exclusive_builds.prf:
 E:/qt/5.12.7/mingw73_32/mkspecs/features/toolchain.prf:
 E:/qt/5.12.7/mingw73_32/mkspecs/features/default_pre.prf:

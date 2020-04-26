@@ -55,9 +55,11 @@ void WexNetwork::readMessage() {
     }
     else if (res == "BRO") {
         QString code = header.section(' ', 1, 1);
+        QString length = header.section(' ', 3, 3);
         if (code.toInt() == MESSAGEARRIVE) {
-            qDebug() << "message arrives";
-            emit boardArrive(MESSAGEARRIVE);
+            QByteArray message2 = tcpSocket->read(length.toInt());
+            qDebug() << "message arrives" << " " <<message2;
+            emit boardArrive(MESSAGEARRIVE, message2);
         }
     }
     else {

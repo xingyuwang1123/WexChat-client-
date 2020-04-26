@@ -12,6 +12,8 @@ extern QString TEMPDIRPASS;
 
 extern QString HEADERFILEPASS;
 
+extern QString MYNAME;
+
 
 QString getRandomString(int length);
 

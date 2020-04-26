@@ -43,7 +43,7 @@ signals:
     void dataArrive();
     void linkOut();
     void packageError();
-    void boardArrive(boardType type);
+    void boardArrive(boardType type, QByteArray data);
 };
 
 #endif // WEXNETWORK_H

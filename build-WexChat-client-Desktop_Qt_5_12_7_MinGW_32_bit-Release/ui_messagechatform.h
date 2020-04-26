@@ -16,6 +16,7 @@
 #include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
+#include <messageshowform.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -27,7 +28,8 @@ public:
     QFrame *frame_2;
     QFrame *frame_3;
     QPlainTextEdit *plainTextEdit;
-    QPushButton *pushButton;
+    QPushButton *sendButton;
+    MessageShowForm *chatForm;
 
     void setupUi(QWidget *MessageChatForm)
     {
@@ -55,9 +57,12 @@ public:
         plainTextEdit = new QPlainTextEdit(frame_2);
         plainTextEdit->setObjectName(QString::fromUtf8("plainTextEdit"));
         plainTextEdit->setGeometry(QRect(0, 30, 581, 101));
-        pushButton = new QPushButton(frame_2);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(494, 102, 81, 31));
+        sendButton = new QPushButton(frame_2);
+        sendButton->setObjectName(QString::fromUtf8("sendButton"));
+        sendButton->setGeometry(QRect(494, 102, 81, 31));
+        chatForm = new MessageShowForm(MessageChatForm);
+        chatForm->setObjectName(QString::fromUtf8("chatForm"));
+        chatForm->setGeometry(QRect(-1, 39, 581, 391));
 
         retranslateUi(MessageChatForm);
 
@@ -68,7 +73,7 @@ public:
     {
         MessageChatForm->setWindowTitle(QApplication::translate("MessageChatForm", "Form", nullptr));
         namelabel->setText(QString());
-        pushButton->setText(QApplication::translate("MessageChatForm", "\345\217\221\351\200\201", nullptr));
+        sendButton->setText(QApplication::translate("MessageChatForm", "\345\217\221\351\200\201", nullptr));
     } // retranslateUi
 
 };

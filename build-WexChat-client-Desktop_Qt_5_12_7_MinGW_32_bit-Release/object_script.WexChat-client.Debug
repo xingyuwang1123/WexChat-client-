@@ -13,6 +13,8 @@ debug/loginwindow.o
 debug/mainwindow.o
 debug/messagechatform.o
 debug/messageitemform.o
+debug/messageshowform.o
+debug/messageshowitemform.o
 debug/messagewindow.o
 debug/navigator.o
 debug/newuserwindow.o
@@ -32,6 +34,8 @@ debug/moc_loginwindow.o
 debug/moc_mainwindow.o
 debug/moc_messagechatform.o
 debug/moc_messageitemform.o
+debug/moc_messageshowform.o
+debug/moc_messageshowitemform.o
 debug/moc_messagewindow.o
 debug/moc_navigator.o
 debug/moc_newuserwindow.o

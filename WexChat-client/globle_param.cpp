@@ -11,6 +11,8 @@ QString TEMPDIRPASS = "";
 
 QString HEADERFILEPASS = "";
 
+QString MYNAME = "";
+
 QString getRandomString(int length)
 {
     qsrand(QDateTime::currentMSecsSinceEpoch());//为随机值设定一个seed

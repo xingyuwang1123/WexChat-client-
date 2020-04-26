@@ -5,6 +5,7 @@
 #include "navigator.h"
 #include "centerwindow.h"
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::MainWindow)
@@ -16,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     center = nullptr;
     friends = nullptr;
     message  = nullptr;
+    group = nullptr;
     connect(nav, &Navigator::centerClicked, this, [=](){
         if (center == nullptr) {
             center = new CenterWindow(this);
@@ -64,6 +66,18 @@ MainWindow::MainWindow(QWidget *parent) :
             shownWindow = 1;
         }
     });
+    connect(nav, &Navigator::groupClicked, this, [=](){
+        if (group == nullptr) {
+            group = new GroupWindow(this);
+            group->hide();
+        }
+        if (shownWindow != 4) {
+            doHide();
+            group->show();
+            group->move(0, 56);
+            shownWindow = 4;
+        }
+    });
     //直接显示消息窗口
     message = new MessageWindow(this);
     message->show();
@@ -80,6 +94,9 @@ void MainWindow::doHide() {
     }
     else if (shownWindow == 1) {
         message->hide();
+    }
+    else if (shownWindow == 4){
+        group->hide();
     }
 }
 

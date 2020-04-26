@@ -25,8 +25,11 @@ private:
     MessageChatForm *chatForm;
     WexNetwork *network;
     QMap<QString, MessageChatForm *> idchatMap;
-    void addItem(QString uid, QString type);
+    void addItem(QString uid, QString type, bool ifcreate);
     QMap<QString, MessageItemForm*> iditemMap;
+
+signals:
+    void itemLoadok();
 };
 
 #endif // MESSAGEWINDOW_H

@@ -16,6 +16,7 @@
 #include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
+#include <messageshowform.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -28,6 +29,7 @@ public:
     QFrame *frame_3;
     QPlainTextEdit *plainTextEdit;
     QPushButton *sendButton;
+    MessageShowForm *chatForm;
 
     void setupUi(QWidget *MessageChatForm)
     {
@@ -58,6 +60,9 @@ public:
         sendButton = new QPushButton(frame_2);
         sendButton->setObjectName(QString::fromUtf8("sendButton"));
         sendButton->setGeometry(QRect(494, 102, 81, 31));
+        chatForm = new MessageShowForm(MessageChatForm);
+        chatForm->setObjectName(QString::fromUtf8("chatForm"));
+        chatForm->setGeometry(QRect(-1, 39, 581, 391));
 
         retranslateUi(MessageChatForm);
 
