@@ -9,5 +9,6 @@
         <file>img/circle.svg</file>
         <file>img/group.svg</file>
         <file>img/triangle.svg</file>
+        <file>img/createg.svg</file>
     </qresource>
 </RCC>
