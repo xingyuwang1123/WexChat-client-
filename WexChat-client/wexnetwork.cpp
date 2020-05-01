@@ -102,8 +102,8 @@ void WexNetwork::writeMessage() {
 void WexNetwork::displayError(QAbstractSocket::SocketError) {
     qDebug()<<tcpSocket->errorString();
     //reconnect to server
-//    disconnect();
-//    newConnect();
+    disconnect();
+    newConnect();
 }
 
 void WexNetwork::disconnect() {

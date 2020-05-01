@@ -21,6 +21,7 @@ MessageItemForm::MessageItemForm(QWidget *parent, QString header, QString name, 
         connect(ftp, &WexFtp::fileFinished, this, [=](QString filename){
             QStringList list = filename.split('/');
             if (list.last() == header) {
+                disconnect(ftp, &WexFtp::fileFinished, this, 0);
                 QImage img(filename);
                 img = img.scaled(ui->headerlabel->width(), ui->headerlabel->height());
                 ui->headerlabel->setPixmap(QPixmap::fromImage(img));

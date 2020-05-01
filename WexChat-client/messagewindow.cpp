@@ -23,6 +23,7 @@ MessageWindow::MessageWindow(QWidget *parent) :
         QString area = obj.value("area").toString();
         int mtype = obj.value("type").toInt();
         if (mtype == 0) {
+            //signal message
             if (idchatMap.contains(fromuid)) {
                 idchatMap.find(fromuid).value()->addMsg(text, msgtime);
             }
@@ -31,6 +32,18 @@ MessageWindow::MessageWindow(QWidget *parent) :
                 addItem(fromuid, "user", true);
                 connect(this, &MessageWindow::itemLoadok, this, [=](){
                     idchatMap.find(fromuid).value()->addMsg(text, msgtime);
+                });
+            }
+        }
+        else {
+            //group message
+            if (idgchatMap.contains(area)) {
+                idgchatMap.find(area).value()->addItem(fromuid, text, msgtime);
+            }
+            else {
+                addItem(area, "group", true);
+                connect(this, &MessageWindow::itemLoadok, this, [=](){
+                    idgchatMap.find(area).value()->addItem(fromuid, text, msgtime);
                 });
             }
         }
@@ -43,29 +56,32 @@ void MessageWindow::addItem(QString uid, QString type, bool ifcreate) {
         network->sendPMessage(uid, "getheadername");
         connect(network, &WexNetwork::dataArrive, this, [=](){
             QString res = network->fetchPMessage();
-            disconnect(network, &WexNetwork::dataArrive, this, 0);
+
             QJsonDocument doc = QJsonDocument::fromJson(res.toUtf8());
             QJsonObject obj = doc.object();
             QString name = obj.value("name").toString();
             QString header = obj.value("header").toString();
-            delete ui->messagescrollArea->widget()->layout();
-            QGridLayout *playout = new QGridLayout(this);
-            foreach(MessageItemForm *form, iditemMap.values()) {
-                playout->addWidget(form);
-            }
-            MessageItemForm *form2 = new MessageItemForm(this, header, "name", 0, uid);
-            //add event
-            connect(form2, &MessageItemForm::clicked, this, [=](QString uid){
-                changeChatForm(uid, "", false);
-            });
-            playout->addWidget(form2);
-            iditemMap.insert(uid, form2);
-            ui->messagescrollArea->widget()->setLayout(playout);
-            if (ifcreate == true) {
-                MessageChatForm *chatform = new MessageChatForm(this, uid, name, 0);
-                chatform->hide();
-                idchatMap.insert(uid, chatform);
-                emit itemLoadok();
+            if (name != "") {
+                disconnect(network, &WexNetwork::dataArrive, this, 0);
+                delete ui->messagescrollArea->widget()->layout();
+                QGridLayout *playout = new QGridLayout(this);
+                foreach(MessageItemForm *form, iditemMap.values()) {
+                    playout->addWidget(form);
+                }
+                MessageItemForm *form2 = new MessageItemForm(this, header, "name", 0, uid);
+                //add event
+                connect(form2, &MessageItemForm::clicked, this, [=](QString uid){
+                    changeChatForm(uid, "", false);
+                });
+                playout->addWidget(form2);
+                iditemMap.insert(uid, form2);
+                ui->messagescrollArea->widget()->setLayout(playout);
+                if (ifcreate == true) {
+                    MessageChatForm *chatform = new MessageChatForm(this, uid, name, 0);
+                    chatform->hide();
+                    idchatMap.insert(uid, chatform);
+                    emit itemLoadok();
+                }
             }
         });
     }
@@ -78,12 +94,12 @@ void MessageWindow::addItem(QString uid, QString type, bool ifcreate) {
             QJsonObject obj = doc.object();
             QString name = obj.value("name").toString();
             QString header = obj.value("header").toString();
-            delete ui->messagescrollArea->widget()->layout();
+            //delete ui->messagescrollArea->widget()->layout();
             QGridLayout *playout = new QGridLayout(this);
             foreach(MessageItemForm *form, iditemMap.values()) {
                 playout->addWidget(form);
             }
-            MessageItemForm *form2 = new MessageItemForm(this, header, "name", 0, uid);
+            MessageItemForm *form2 = new MessageItemForm(this, header, name, 0, uid);
             //add event
             //todo
             connect(form2, &MessageItemForm::clicked, this, [=](QString uid){

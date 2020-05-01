@@ -3,6 +3,7 @@
 #include <QDateTime>
 #include "globle_param.h"
 #include <QJsonObject>
+#include <QMessageBox>
 
 
 GroupChatFormForm::GroupChatFormForm(QWidget *parent,  QString gid, QString name) :
@@ -37,9 +38,69 @@ GroupChatFormForm::GroupChatFormForm(QWidget *parent,  QString gid, QString name
                 if (res == "failed" || res == "warning") {
 
                 }
+                else if (res == "ok") {
+                    addItem(GLOUID, msg, time(0));
+                }
             });
         }
     });
+
+    QTimer *timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, this, [=](){
+        if (idGmemberMap.count() == 0) {
+            //get member header and name
+            imgCount = 0;
+            network->sendPMessage(gid, "getallgroupmemberbugid");
+            connect(network, &WexNetwork::dataArrive, this, [=](){
+                QString res = network->fetchPMessage();
+                disconnect(network, &WexNetwork::dataArrive, this, 0);
+                if (res == "failed") {
+                    QMessageBox::information(this, "提示", "读取失败");
+                }
+                else {
+                    QJsonDocument doc = QJsonDocument::fromJson(res.toUtf8());
+                    QJsonArray arr = doc.array();
+                    for (QJsonArray::iterator it = arr.begin(); it != arr.end(); it++) {
+                        QJsonObject obj = it->toObject();
+                        gmember_entity entity;
+                        QString uid = obj.value("uid").toString();
+                        entity.name = obj.value("name").toString();
+                        entity.header = obj.value("header").toString();
+                        idGmemberMap.insert(uid, entity);
+                        if (entity.header != "") {
+                            ftp->fetchFile(entity.header);
+                            imgCount++;
+                            connect(ftp, &WexFtp::fileFinished, this, [=](QString filename){
+                                QStringList list  =filename.split('/');
+                                if (list.last() == entity.header) {
+                                    imgCount--;
+                                    gmember_entity ent = idGmemberMap.find(uid).value();
+                                    ent.pass = filename;
+                                    idGmemberMap.insert(uid, ent);
+                                }
+                                if (imgCount == 0) {
+                                    disconnect(ftp, &WexFtp::fileFinished, this, 0);
+                                }
+                            });
+                        }
+
+                    }
+                }
+            });
+
+        }
+    });
+
+    timer->start(1000);
+
+}
+
+void GroupChatFormForm::addItem(QString uid, QString text, time_t time) {
+
+    if (idGmemberMap.contains(uid)){
+        gmember_entity ent = idGmemberMap.find(uid).value();
+        ui->showwidget->addItem(ent.pass, ent.name, text, time);
+    }
 }
 
 GroupChatFormForm::~GroupChatFormForm()
