@@ -36,6 +36,10 @@ private:
     QMap<QString, QListWidgetItem*> itemMap;
     QMap<QListWidgetItem*, QString> itemMap2;
     int imageResting;
+    void showMemberList(QString gid);
+
+signals:
+    void sendGroupMessage(QString gid);
 };
 
 #endif // GROUPWINDOW_H

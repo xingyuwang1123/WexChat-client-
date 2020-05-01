@@ -39,6 +39,7 @@ void FriendsApplyDialog::loadItems(QStringList header, QStringList name, QString
     QGridLayout *playout = new QGridLayout(this);
     for (int i = 0; i < header.length(); i++) {
         applyItemForm *form = new applyItemForm(this, header[i], name[i], intro[i], uid[i], cutinList);
+        form->setMinimumSize(340, 175);
         playout->addWidget(form);
     }
     ui->scrollArea->widget()->setLayout(playout);

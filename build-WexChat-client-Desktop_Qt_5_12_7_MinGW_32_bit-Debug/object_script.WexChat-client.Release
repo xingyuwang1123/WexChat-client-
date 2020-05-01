@@ -10,7 +10,11 @@ release/friendapplyform.o
 release/friendsapplydialog.o
 release/friendswindow.o
 release/globle_param.o
+release/groupapplydialog.o
+release/groupapplyform.o
+release/groupchatformform.o
 release/groupinfoform.o
+release/groupmemberdialog.o
 release/groupwindow.o
 release/main.o
 release/loginwindow.o
@@ -36,7 +40,11 @@ release/moc_creategroupdialog.o
 release/moc_friendapplyform.o
 release/moc_friendsapplydialog.o
 release/moc_friendswindow.o
+release/moc_groupapplydialog.o
+release/moc_groupapplyform.o
+release/moc_groupchatformform.o
 release/moc_groupinfoform.o
+release/moc_groupmemberdialog.o
 release/moc_groupwindow.o
 release/moc_loginwindow.o
 release/moc_mainwindow.o

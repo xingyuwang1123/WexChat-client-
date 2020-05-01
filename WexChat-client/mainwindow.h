@@ -7,6 +7,7 @@
 #include "friendswindow.h"
 #include "messagewindow.h"
 #include "groupwindow.h"
+#include "wexnetwork.h"
 
 namespace Ui {
 class MainWindow;
@@ -27,6 +28,7 @@ private:
     FriendsWindow *friends;
     MessageWindow *message;
     GroupWindow *group;
+    WexNetwork *network;
     int shownWindow;
     void doHide();
 };

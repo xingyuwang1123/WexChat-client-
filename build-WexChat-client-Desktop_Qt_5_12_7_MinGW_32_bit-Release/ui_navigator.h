@@ -10,6 +10,7 @@
 #define UI_NAVIGATOR_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QLabel>
@@ -27,6 +28,7 @@ public:
     QPushButton *centerButton;
     QPushButton *firendsButton;
     QPushButton *messageButton;
+    QPushButton *groupButton;
 
     void setupUi(QWidget *Navigator)
     {
@@ -51,22 +53,30 @@ public:
         usernameLabel->setAutoFillBackground(true);
         centerButton = new QPushButton(frame);
         centerButton->setObjectName(QString::fromUtf8("centerButton"));
-        centerButton->setGeometry(QRect(520, 10, 40, 40));
+        centerButton->setGeometry(QRect(550, 10, 40, 40));
         centerButton->setAutoFillBackground(true);
         centerButton->setStyleSheet(QString::fromUtf8(""));
         centerButton->setFlat(true);
         firendsButton = new QPushButton(frame);
         firendsButton->setObjectName(QString::fromUtf8("firendsButton"));
-        firendsButton->setGeometry(QRect(430, 8, 40, 40));
+        firendsButton->setGeometry(QRect(390, 8, 40, 40));
         firendsButton->setAutoFillBackground(true);
         firendsButton->setStyleSheet(QString::fromUtf8(""));
         firendsButton->setFlat(true);
         messageButton = new QPushButton(frame);
         messageButton->setObjectName(QString::fromUtf8("messageButton"));
-        messageButton->setGeometry(QRect(340, 8, 40, 40));
+        messageButton->setGeometry(QRect(300, 8, 40, 40));
         messageButton->setAutoFillBackground(true);
         messageButton->setStyleSheet(QString::fromUtf8(""));
         messageButton->setFlat(true);
+        groupButton = new QPushButton(frame);
+        groupButton->setObjectName(QString::fromUtf8("groupButton"));
+        groupButton->setGeometry(QRect(470, 8, 40, 40));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/img/group.svg"), QSize(), QIcon::Normal, QIcon::Off);
+        groupButton->setIcon(icon);
+        groupButton->setIconSize(QSize(40, 40));
+        groupButton->setFlat(true);
 
         retranslateUi(Navigator);
 
@@ -81,6 +91,7 @@ public:
         centerButton->setText(QString());
         firendsButton->setText(QString());
         messageButton->setText(QString());
+        groupButton->setText(QString());
     } // retranslateUi
 
 };

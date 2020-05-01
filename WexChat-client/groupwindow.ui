@@ -62,7 +62,7 @@
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="deleteFriButton">
+    <widget class="QPushButton" name="quitButton">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -283,7 +283,7 @@
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="deleteFriButton_2">
+    <widget class="QPushButton" name="clearGroupButton">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -440,7 +440,7 @@
       </layout>
      </widget>
     </widget>
-    <widget class="QPushButton" name="deleteFriButton_3">
+    <widget class="QPushButton" name="editInfoButton">
      <property name="geometry">
       <rect>
        <x>140</x>

@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "messagechatform.h"
+#include "groupchatformform.h"
 #include "messageitemform.h"
 #include "wexnetwork.h"
 #include <QMap>
@@ -18,13 +19,14 @@ class MessageWindow : public QWidget
 public:
     explicit MessageWindow(QWidget *parent = nullptr);
     ~MessageWindow();
-    void changeChatForm(QString uid, QString name);
+    void changeChatForm(QString uid, QString name, bool isGroup);
 
 private:
     Ui::MessageWindow *ui;
-    MessageChatForm *chatForm;
+    void *chatForm;
     WexNetwork *network;
     QMap<QString, MessageChatForm *> idchatMap;
+    QMap<QString, GroupChatFormForm *> idgchatMap;
     void addItem(QString uid, QString type, bool ifcreate);
     QMap<QString, MessageItemForm*> iditemMap;
 

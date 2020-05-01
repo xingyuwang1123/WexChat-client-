@@ -18,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
     friends = nullptr;
     message  = nullptr;
     group = nullptr;
+    network = WexNetwork::get_instance();
     connect(nav, &Navigator::centerClicked, this, [=](){
         if (center == nullptr) {
             center = new CenterWindow(this);
@@ -40,7 +41,7 @@ MainWindow::MainWindow(QWidget *parent) :
             friends->hide();
             //切换发消息窗口
             connect(friends, &FriendsWindow::sendMessageChat, this, [=](QString uid, QString name){
-                message->changeChatForm(uid, name);
+                message->changeChatForm(uid, name, false);
                 doHide();
                 message->show();
                 message->move(0,56);
@@ -70,6 +71,14 @@ MainWindow::MainWindow(QWidget *parent) :
         if (group == nullptr) {
             group = new GroupWindow(this);
             group->hide();
+            //发消息
+            connect(group, &GroupWindow::sendGroupMessage, this, [=](QString gid){
+                message->changeChatForm(gid, "123456", true);
+                doHide();
+                message->show();
+                message->move(0,56);
+                shownWindow = 1;
+            });
         }
         if (shownWindow != 4) {
             doHide();
