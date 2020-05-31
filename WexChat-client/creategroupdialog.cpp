@@ -1,8 +1,8 @@
-#include "creategroupdialog.h"
+﻿#include "creategroupdialog.h"
 #include "ui_creategroupdialog.h"
 #include "groupinfoform.h"
 #include <QMessageBox>
-
+ #pragma execution_character_set("utf-8")
 CreateGroupDialog::CreateGroupDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::CreateGroupDialog)

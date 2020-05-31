@@ -1,6 +1,6 @@
-#ifndef MESSAGECHATFORM_H
+﻿#ifndef MESSAGECHATFORM_H
 #define MESSAGECHATFORM_H
-
+ #pragma execution_character_set("utf-8")
 #include <QWidget>
 #include "wexnetwork.h"
 #include "wexftp.h"
@@ -25,6 +25,7 @@ private:
     QString name;
     QString headerpass;
     int type;
+    void sendMessage(QString text, QString pass="", QString type = "");
 };
 
 #endif // MESSAGECHATFORM_H

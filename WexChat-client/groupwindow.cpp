@@ -1,4 +1,4 @@
-#include "groupwindow.h"
+﻿#include "groupwindow.h"
 #include "ui_groupwindow.h"
 #include "creategroupdialog.h"
 #include "addgroupdialog.h"
@@ -6,7 +6,7 @@
 #include "globle_param.h"
 #include "groupapplydialog.h"
 #include <QMessageBox>
-
+ #pragma execution_character_set("utf-8")
 GroupWindow::GroupWindow(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::GroupWindow)

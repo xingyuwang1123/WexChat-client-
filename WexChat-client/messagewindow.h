@@ -1,6 +1,6 @@
 #ifndef MESSAGEWINDOW_H
 #define MESSAGEWINDOW_H
-
+ #pragma execution_character_set("utf-8")
 #include <QWidget>
 #include "messagechatform.h"
 #include "groupchatformform.h"

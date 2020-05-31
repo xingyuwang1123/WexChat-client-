@@ -1,6 +1,6 @@
 #ifndef CHOOSECUTINDIALOG_H
 #define CHOOSECUTINDIALOG_H
-
+ #pragma execution_character_set("utf-8")
 #include <QDialog>
 
 namespace Ui {

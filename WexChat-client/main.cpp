@@ -3,7 +3,7 @@
 #include <QApplication>
 #include "wexnetwork.h"
 #include "wexftp.h"
-
+ #pragma execution_character_set("utf-8")
 WexNetwork* WexNetwork::m_instance_ptr = nullptr;
 WexFtp *WexFtp::m_instance_ptr2 = nullptr;
 

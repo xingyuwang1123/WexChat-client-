@@ -1,4 +1,4 @@
-#include "centerwindow.h"
+﻿#include "centerwindow.h"
 #include "ui_centerwindow.h"
 #include "globle_param.h"
 #include "WexConfig.h"
@@ -7,7 +7,7 @@
 #include <QDesktopServices>
 #include <QFileDialog>
 #include <QMessageBox>
-
+ #pragma execution_character_set("utf-8")
 CenterWindow::CenterWindow(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::CenterWindow)

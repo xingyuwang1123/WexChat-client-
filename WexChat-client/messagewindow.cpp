@@ -1,9 +1,10 @@
-#include "messagewindow.h"
+﻿#include "messagewindow.h"
 #include "ui_messagewindow.h"
 #include "messageitemform.h"
 #include "groupchatformform.h"
+#include "globle_param.h"
 #include <QGridLayout>
-
+ #pragma execution_character_set("utf-8")
 MessageWindow::MessageWindow(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::MessageWindow)
@@ -48,6 +49,48 @@ MessageWindow::MessageWindow(QWidget *parent) :
             }
         }
         //ui->chatForm->addItem(headerpass, name, text, msgtime);
+    });
+    //fetch offline message
+    network->sendPMessage(GLOUID, "fetchofflinemessage");
+    connect(network, &WexNetwork::dataArrive, this, [=](){
+        QString res = network->fetchPMessage();
+        disconnect(network, &WexNetwork::dataArrive, this, 0);
+        QJsonDocument doc = QJsonDocument::fromJson(res.toUtf8());
+        QJsonArray arr = doc.array();
+        for (QJsonArray::iterator it = arr.begin();it != arr.end(); it++) {
+            QJsonObject obj = it->toObject();
+            int type = obj.value("type").toInt();
+            QString text = obj.value("text").toString();
+            time_t msgtime = obj.value("msgtime").toInt();
+            QString id = obj.value("id").toString();
+            QString area = obj.value("area").toString();
+            if (type == 0) {
+                //signal message
+                if (idchatMap.contains(id)) {
+                    idchatMap.find(id).value()->addMsg(text, msgtime);
+                }
+                else {
+                    //create formfirst
+                    addItem(id, "user", true);
+                    connect(this, &MessageWindow::itemLoadok, this, [=](){
+                        idchatMap.find(id).value()->addMsg(text, msgtime);
+                    });
+                }
+            }
+            else {
+                //group message
+                if (idgchatMap.contains(area)) {
+                    idgchatMap.find(area).value()->addItem(id, text, msgtime);
+                }
+                else {
+                    addItem(area, "group", true);
+                    connect(this, &MessageWindow::itemLoadok, this, [=](){
+                        idgchatMap.find(area).value()->addItem(id, text, msgtime);
+                    });
+                }
+            }
+
+        }
     });
 }
 

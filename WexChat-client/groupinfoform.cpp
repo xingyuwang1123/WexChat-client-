@@ -2,7 +2,7 @@
 #include "ui_groupinfoform.h"
 #include "globle_param.h"
 #include <QMessageBox>
-
+ #pragma execution_character_set("utf-8")
 GroupInfoForm::GroupInfoForm(QWidget *parent, QString name, QString header, QString intro, QString id) :
     QWidget(parent),
     ui(new Ui::GroupInfoForm)

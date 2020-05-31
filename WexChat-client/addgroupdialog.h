@@ -1,6 +1,6 @@
 #ifndef ADDGROUPDIALOG_H
 #define ADDGROUPDIALOG_H
-
+ #pragma execution_character_set("utf-8")
 #include <QDialog>
 #include "wexftp.h"
 #include "wexnetwork.h"

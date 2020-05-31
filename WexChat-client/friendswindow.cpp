@@ -1,4 +1,4 @@
-#include "friendswindow.h"
+﻿#include "friendswindow.h"
 #include "ui_friendswindow.h"
 #include "globle_param.h"
 #include "addcutindialog.h"
@@ -6,7 +6,7 @@
 #include <QJsonObject>
 #include <QDebug>
 #include <QMessageBox>
-
+ #pragma execution_character_set("utf-8")
 FriendsWindow::FriendsWindow(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::FriendsWindow)

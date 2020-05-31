@@ -1,6 +1,6 @@
 #include "friendapplyform.h"
 #include "ui_friendapplyform.h"
-
+ #pragma execution_character_set("utf-8")
 FriendApplyForm::FriendApplyForm(QWidget *parent, QString header, QString name) :
     QWidget(parent),
     ui(new Ui::FriendApplyForm)

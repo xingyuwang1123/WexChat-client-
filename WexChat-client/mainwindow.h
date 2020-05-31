@@ -1,6 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+ #pragma execution_character_set("utf-8")
 #include <QWidget>
 #include "navigator.h"
 #include "centerwindow.h"

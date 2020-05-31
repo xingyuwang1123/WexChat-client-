@@ -1,7 +1,7 @@
 #include "groupmemberdialog.h"
 #include "ui_groupmemberdialog.h"
 #include <QListWidget>
-
+ #pragma execution_character_set("utf-8")
 GroupMemberDialog::GroupMemberDialog(QWidget *parent, QString gid) :
     QDialog(parent),
     ui(new Ui::GroupMemberDialog)

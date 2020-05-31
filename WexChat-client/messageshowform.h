@@ -1,6 +1,6 @@
 #ifndef MESSAGESHOWFORM_H
 #define MESSAGESHOWFORM_H
-
+ #pragma execution_character_set("utf-8")
 #include <QWidget>
 #include "messageshowitemform.h"
 

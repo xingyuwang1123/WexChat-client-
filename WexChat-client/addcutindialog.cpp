@@ -1,7 +1,7 @@
-#include "addcutindialog.h"
+﻿#include "addcutindialog.h"
 #include "ui_addcutindialog.h"
 #include <QLineEdit>
-
+ #pragma execution_character_set("utf-8")
 AddCutinDialog::AddCutinDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AddCutinDialog)

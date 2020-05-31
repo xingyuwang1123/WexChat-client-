@@ -1,6 +1,6 @@
 #ifndef WEXFTP_H
 #define WEXFTP_H
-
+ #pragma execution_character_set("utf-8")
 #include <QObject>
 #include <qftp.h>
 #include <QMap>

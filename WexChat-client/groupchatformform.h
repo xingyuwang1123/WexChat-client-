@@ -1,6 +1,6 @@
-#ifndef GROUPCHATFORMFORM_H
+﻿#ifndef GROUPCHATFORMFORM_H
 #define GROUPCHATFORMFORM_H
-
+ #pragma execution_character_set("utf-8")
 #include <QWidget>
 #include "wexnetwork.h"
 #include "wexftp.h"
@@ -31,6 +31,7 @@ private:
     WexFtp *ftp;
     int imgCount;
     QMap<QString, gmember_entity> idGmemberMap;
+    void sendMsg(QString msg,  QString pass, QString type);
 };
 
 #endif // GROUPCHATFORMFORM_H

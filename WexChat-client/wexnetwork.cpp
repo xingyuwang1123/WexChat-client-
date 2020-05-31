@@ -3,7 +3,7 @@
 #include <QIODevice>
 #include <QDebug>
 #include <QTimer>
-
+ #pragma execution_character_set("utf-8")
 WexNetwork::WexNetwork(QObject *parent) : QObject(parent)
 {
     tcpSocket = new QTcpSocket(this);

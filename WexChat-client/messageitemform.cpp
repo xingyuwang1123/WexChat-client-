@@ -3,7 +3,7 @@
 #include <QMouseEvent>
 #include <QMessageBox>
 #include <QDebug>
-
+ #pragma execution_character_set("utf-8")
 MessageItemForm::MessageItemForm(QWidget *parent, QString header, QString name, qint32 count, QString uid) :
     QWidget(parent),
     ui(new Ui::MessageItemForm),

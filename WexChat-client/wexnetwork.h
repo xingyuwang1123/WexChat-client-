@@ -1,6 +1,6 @@
 #ifndef WEXNETWORK_H
 #define WEXNETWORK_H
-
+ #pragma execution_character_set("utf-8")
 #include <QObject>
 #include <QtNetwork>
 #include <iostream>

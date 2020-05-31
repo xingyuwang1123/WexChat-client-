@@ -1,11 +1,11 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QIcon>
 #include <QPushButton>
 #include "navigator.h"
 #include "centerwindow.h"
 
-
+ #pragma execution_character_set("utf-8")
 MainWindow::MainWindow(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::MainWindow)
@@ -88,10 +88,10 @@ MainWindow::MainWindow(QWidget *parent) :
         }
     });
     //直接显示消息窗口
-    message = new MessageWindow(this);
-    message->show();
-    message->move(0,56);
-    shownWindow = 1;
+//    message = new MessageWindow(this);
+//    message->show();
+//    message->move(0,56);
+//    shownWindow = 1;
 }
 
 void MainWindow::doHide() {

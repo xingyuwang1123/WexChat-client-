@@ -1,6 +1,6 @@
-#ifndef MESSAGESHOWITEMFORM_H
+﻿#ifndef MESSAGESHOWITEMFORM_H
 #define MESSAGESHOWITEMFORM_H
-
+ #pragma execution_character_set("utf-8")
 #include <QWidget>
 #include "wexftp.h"
 

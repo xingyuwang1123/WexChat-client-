@@ -2,7 +2,7 @@
 #include "ui_groupapplydialog.h"
 #include "groupapplyform.h"
 #include <QGridLayout>
-
+ #pragma execution_character_set("utf-8")
 GroupApplyDialog::GroupApplyDialog(QWidget *parent, QString gid) :
     QDialog(parent),
     ui(new Ui::GroupApplyDialog),

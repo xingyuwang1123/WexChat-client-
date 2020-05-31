@@ -9,7 +9,7 @@
 #include <QMessageBox>
 #include <QFile>
 #include <QComboBox>
-
+ #pragma execution_character_set("utf-8")
 CenterBox::CenterBox(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::CenterBox)

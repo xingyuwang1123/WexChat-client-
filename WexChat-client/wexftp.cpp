@@ -5,7 +5,7 @@
 #include <QFile>
 #include <QApplication>
 #include <QCryptographicHash>
-
+ #pragma execution_character_set("utf-8")
 WexFtp::WexFtp(QObject *parent) : QObject(parent)
 {
     ftp = new QFtp(this);

@@ -1,7 +1,7 @@
 #include "groupapplyform.h"
 #include "ui_groupapplyform.h"
 #include <QMessageBox>
-
+ #pragma execution_character_set("utf-8")
 GroupApplyForm::GroupApplyForm(QWidget *parent, QString name, QString header, QString uid, QString appinfo, QString gid) :
     QWidget(parent),
     ui(new Ui::GroupApplyForm),

@@ -1,9 +1,9 @@
-#include "addfriendsdialog.h"
+﻿#include "addfriendsdialog.h"
 #include "ui_addfriendsdialog.h"
 #include "globle_param.h"
 #include <QJsonObject>
 #include <QMessageBox>
-
+ #pragma execution_character_set("utf-8")
 AddFriendsDialog::AddFriendsDialog(QWidget *parent, QMap<QString, QString> uidMap) :
     QDialog(parent),
     ui(new Ui::AddFriendsDialog)

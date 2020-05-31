@@ -1,7 +1,7 @@
 #include "choosecutindialog.h"
 #include "ui_choosecutindialog.h"
 #include <QComboBox>
-
+ #pragma execution_character_set("utf-8")
 ChooseCutinDialog::ChooseCutinDialog(QWidget *parent,  QStringList list) :
     QDialog(parent),
     ui(new Ui::ChooseCutinDialog)

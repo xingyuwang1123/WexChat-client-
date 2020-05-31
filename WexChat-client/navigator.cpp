@@ -4,7 +4,7 @@
 #include "globle_param.h"
 #include <QJsonObject>
 #include <qftp.h>
-
+ #pragma execution_character_set("utf-8")
 Navigator::Navigator(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Navigator)

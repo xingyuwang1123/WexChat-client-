@@ -3,7 +3,7 @@
 #include "globle_param.h"
 #include "applyitemform.h"
 #include <QLayout>
-
+ #pragma execution_character_set("utf-8")
 FriendsApplyDialog::FriendsApplyDialog(QWidget *parent, QStringList list) :
     QDialog(parent),
     ui(new Ui::FriendsApplyDialog)

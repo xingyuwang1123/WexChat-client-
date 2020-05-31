@@ -1,6 +1,6 @@
 #ifndef NAVIGATOR_H
 #define NAVIGATOR_H
-
+ #pragma execution_character_set("utf-8")
 #include <QWidget>
 #include "wexnetwork.h"
 #include "wexftp.h"

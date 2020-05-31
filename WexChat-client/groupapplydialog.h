@@ -1,6 +1,6 @@
 #ifndef GROUPAPPLYDIALOG_H
 #define GROUPAPPLYDIALOG_H
-
+ #pragma execution_character_set("utf-8")
 #include <QDialog>
 #include "wexnetwork.h"
 

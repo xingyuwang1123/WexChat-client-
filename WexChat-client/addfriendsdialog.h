@@ -1,6 +1,6 @@
 #ifndef ADDFRIENDSDIALOG_H
 #define ADDFRIENDSDIALOG_H
-
+ #pragma execution_character_set("utf-8")
 #include <QDialog>
 #include "wexnetwork.h"
 #include "friendapplyform.h"

@@ -3,7 +3,7 @@
 #include <QPushButton>
 #include <QJsonObject>
 #include <globle_param.h>
-
+ #pragma execution_character_set("utf-8")
 LoginWindow::LoginWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::LoginWindow)

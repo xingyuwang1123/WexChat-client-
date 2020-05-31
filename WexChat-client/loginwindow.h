@@ -1,6 +1,6 @@
 #ifndef LOGINWINDOW_H
 #define LOGINWINDOW_H
-
+ #pragma execution_character_set("utf-8")
 #include <QMainWindow>
 #include "newuserwindow.h"
 #include "wexnetwork.h"

@@ -3,7 +3,7 @@
 #include "globle_param.h"
 #include "choosecutindialog.h"
 #include <QMessageBox>
-
+ #pragma execution_character_set("utf-8")
 applyItemForm::applyItemForm(QWidget *parent, QString header, QString name, QString info,  QString uid, QStringList list) :
     QWidget(parent),
     ui(new Ui::applyItemForm)

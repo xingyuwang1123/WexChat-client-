@@ -1,6 +1,6 @@
 #ifndef FRIENDSAPPLYDIALOG_H
 #define FRIENDSAPPLYDIALOG_H
-
+ #pragma execution_character_set("utf-8")
 #include <QDialog>
 #include "wexnetwork.h"
 

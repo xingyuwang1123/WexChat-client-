@@ -1,6 +1,6 @@
 #ifndef FRIENDAPPLYFORM_H
 #define FRIENDAPPLYFORM_H
-
+ #pragma execution_character_set("utf-8")
 #include <QWidget>
 #include "wexftp.h"
 

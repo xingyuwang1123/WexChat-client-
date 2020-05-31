@@ -1,7 +1,7 @@
-#include "messageshowform.h"
+﻿#include "messageshowform.h"
 #include "ui_messageshowform.h"
 #include <QGridLayout>
-
+ #pragma execution_character_set("utf-8")
 MessageShowForm::MessageShowForm(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::MessageShowForm)

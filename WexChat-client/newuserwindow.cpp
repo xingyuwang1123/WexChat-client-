@@ -1,9 +1,9 @@
-#include "newuserwindow.h"
+﻿#include "newuserwindow.h"
 #include "ui_newuserwindow.h"
 #include <QPushButton>
 #include <qjsonobject.h>
 #include <QMessageBox>
-
+ #pragma execution_character_set("utf-8")
 NewUserWindow::NewUserWindow(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::NewUserWindow)

@@ -1,6 +1,6 @@
 #ifndef ADDCUTINDIALOG_H
 #define ADDCUTINDIALOG_H
-
+ #pragma execution_character_set("utf-8")
 #include <QDialog>
 
 namespace Ui {

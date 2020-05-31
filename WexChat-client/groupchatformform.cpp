@@ -1,10 +1,11 @@
-#include "groupchatformform.h"
+﻿#include "groupchatformform.h"
 #include "ui_groupchatformform.h"
 #include <QDateTime>
 #include "globle_param.h"
 #include <QJsonObject>
 #include <QMessageBox>
-
+#include <QFileDialog>
+ #pragma execution_character_set("utf-8")
 
 GroupChatFormForm::GroupChatFormForm(QWidget *parent,  QString gid, QString name) :
     QWidget(parent),
@@ -19,27 +20,46 @@ GroupChatFormForm::GroupChatFormForm(QWidget *parent,  QString gid, QString name
     connect(ui->sendButton, &QPushButton::clicked, this, [=](){
         QString msg = ui->plainTextEdit->toPlainText();
         ui->plainTextEdit->clear();
-
         if (!msg.isEmpty()) {
-            QDateTime datetime = QDateTime();
-            //datetime.setTime(QTime::currentTime());
-            QJsonObject obj;
-            obj.insert("text", msg);
-            obj.insert("fromuid", GLOUID);
-            obj.insert("area", gid);
-            obj.insert("type", 1);
-            obj.insert("msgtime", (int)time(0));
-            QJsonDocument doc(obj);
-            network->sendPMessage(doc.toJson(), "sendmessagetouser");
-            connect(network, &WexNetwork::dataArrive, this, [=](){
-                QString res = network->fetchPMessage();
-                disconnect(network, &WexNetwork::dataArrive, this, 0);
-                //do here
-                if (res == "failed" || res == "warning") {
-
+           sendMsg(msg, "", "");
+        }
+    });
+    //send image
+    connect(ui->pictureButton, &QPushButton::clicked, this, [=](){
+        QString curPath=QDir::currentPath();//获取系统当前目录
+        //获取应用程序的路径
+        QString dlgTitle="选择一个文件"; //对话框标题
+        QString filter="图片文件(*.jpg *.gif *.png);;"; //文件过滤器
+        QString aFileName=QFileDialog::getOpenFileName(this,dlgTitle,curPath,filter);
+        if (!aFileName.isEmpty()) {
+            QString filename = ftp->uploadFile(aFileName);
+            connect(ftp, &WexFtp::fileFinished, this, [=](QString name){
+                if (name == aFileName) {
+                    disconnect(ftp, &WexFtp::fileFinished, this, 0);
+                    //do here
+                    QString temp = "<img>";
+                    temp.append(filename);
+                    sendMsg(temp, aFileName, "img");
                 }
-                else if (res == "ok") {
-                    addItem(GLOUID, msg, time(0));
+            });
+        }
+    });
+    //send file
+    connect(ui->fileButton, &QPushButton::clicked, this, [=](){
+        QString curPath=QDir::currentPath();//获取系统当前目录
+        //获取应用程序的路径
+        QString dlgTitle="选择一个文件"; //对话框标题
+        QString filter="文本文档(*.txt);;所有文件(*.*)"; //文件过滤器
+        QString aFileName=QFileDialog::getOpenFileName(this,dlgTitle,curPath,filter);
+        if (!aFileName.isEmpty()) {
+            QString filename = ftp->uploadFile(aFileName);
+            connect(ftp, &WexFtp::fileFinished, this, [=](QString name){
+                if (name == aFileName) {
+                    disconnect(ftp, &WexFtp::fileFinished, this, 0);
+                    //do here
+                    QString temp = "<fil>";
+                    temp.append(filename);
+                    sendMsg(temp, aFileName, "fil");
                 }
             });
         }
@@ -47,6 +67,8 @@ GroupChatFormForm::GroupChatFormForm(QWidget *parent,  QString gid, QString name
 
     QTimer *timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, [=](){
+        disconnect(timer, &QTimer::timeout, this, 0);
+        timer->stop();
         if (idGmemberMap.count() == 0) {
             //get member header and name
             imgCount = 0;
@@ -95,8 +117,46 @@ GroupChatFormForm::GroupChatFormForm(QWidget *parent,  QString gid, QString name
 
 }
 
-void GroupChatFormForm::addItem(QString uid, QString text, time_t time) {
+void GroupChatFormForm::sendMsg(QString msg,  QString pass, QString type) {
+    QDateTime datetime = QDateTime();
+    //datetime.setTime(QTime::currentTime());
+    QJsonObject obj;
+    obj.insert("text", msg);
+    obj.insert("fromuid", GLOUID);
+    obj.insert("area", gid);
+    obj.insert("type", 1);
+    obj.insert("msgtime", (int)time(0));
+    QJsonDocument doc(obj);
+    network->sendPMessage(doc.toJson(), "sendmessagetouser");
+    connect(network, &WexNetwork::dataArrive, this, [=](){
+        QString res = network->fetchPMessage();
+        disconnect(network, &WexNetwork::dataArrive, this, 0);
+        //do here
+        if (res == "failed" || res == "warning") {
 
+        }
+        else if (res == "ok") {
+           // addItem(GLOUID, msg, time(0));
+            if (pass == "") {
+               addItem(GLOUID, msg, time(0));
+            }
+            else {
+                if (type == "img") {
+                    QString temp = "<iig>";
+                    temp.append(pass);
+                    addItem(GLOUID, msg, time(0));
+                }
+                else if (type == "fil") {
+                    QString temp = "<iil>";
+                    temp.append(pass);
+                    addItem(GLOUID, msg, time(0));
+                }
+            }
+        }
+    });
+}
+
+void GroupChatFormForm::addItem(QString uid, QString text, time_t time) {
     if (idGmemberMap.contains(uid)){
         gmember_entity ent = idGmemberMap.find(uid).value();
         ui->showwidget->addItem(ent.pass, ent.name, text, time);

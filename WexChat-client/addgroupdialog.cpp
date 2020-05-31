@@ -1,9 +1,9 @@
-#include "addgroupdialog.h"
+﻿#include "addgroupdialog.h"
 #include "ui_addgroupdialog.h"
 #include "globle_param.h"
 #include <QFileDialog>
 #include <QMessageBox>
-
+ #pragma execution_character_set("utf-8")
 AddGroupDialog::AddGroupDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AddGroupDialog)

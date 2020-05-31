@@ -1,4 +1,4 @@
-QT       += core gui network ftp
+QT       += core gui network ftp webenginewidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -24,6 +24,7 @@ SOURCES += \
     centerwindow.cpp \
     choosecutindialog.cpp \
     creategroupdialog.cpp \
+    customwebenginepage.cpp \
     friendapplyform.cpp \
     friendsapplydialog.cpp \
     friendswindow.cpp \
@@ -44,6 +45,8 @@ SOURCES += \
     messagewindow.cpp \
     navigator.cpp \
     newuserwindow.cpp \
+    swebengineview.cpp \
+    viedodialog.cpp \
     wexftp.cpp \
     wexnetwork.cpp
 
@@ -57,6 +60,7 @@ HEADERS += \
     centerwindow.h \
     choosecutindialog.h \
     creategroupdialog.h \
+    customwebenginepage.h \
     friendapplyform.h \
     friendsapplydialog.h \
     friendswindow.h \
@@ -76,6 +80,8 @@ HEADERS += \
     messagewindow.h \
     navigator.h \
     newuserwindow.h \
+    swebengineview.h \
+    viedodialog.h \
     wexftp.h \
     wexnetwork.h
 
@@ -105,7 +111,14 @@ FORMS += \
     messageshowitemform.ui \
     messagewindow.ui \
     navigator.ui \
-    newuserwindow.ui
+    newuserwindow.ui \
+    viedodialog.ui
+
+#CONFIG(debug, debug|release) {
+#    LIBS += -L ./lib/ -lQt5Ftpd
+#} else {
+#    LIBS += -L ./lib/ -lQt5Ftp
+#}
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
